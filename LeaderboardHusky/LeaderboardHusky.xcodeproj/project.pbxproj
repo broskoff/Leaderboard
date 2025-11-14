@@ -6,30 +6,25 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		C77C3DEB2EC7763F00ABCD93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C77C3DE22EC7763F00ABCD93 /* Assets.xcassets */; };
+		C77C3DED2EC7763F00ABCD93 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C77C3DE52EC7763F00ABCD93 /* LaunchScreen.storyboard */; };
+		C77C3DEE2EC7763F00ABCD93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77C3DE12EC7763F00ABCD93 /* AppDelegate.swift */; };
+		C77C3DEF2EC7763F00ABCD93 /* LeaderboardHusky.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C77C3DE62EC7763F00ABCD93 /* LeaderboardHusky.xcdatamodeld */; };
+		C77C3DF02EC7763F00ABCD93 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77C3DE72EC7763F00ABCD93 /* MainViewController.swift */; };
+		C77C3DF12EC7763F00ABCD93 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77C3DE82EC7763F00ABCD93 /* SceneDelegate.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		C77C3D172EC76FB200ABCD93 /* LeaderboardHusky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LeaderboardHusky.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C77C3DE12EC7763F00ABCD93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C77C3DE22EC7763F00ABCD93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C77C3DE32EC7763F00ABCD93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C77C3DE42EC7763F00ABCD93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C77C3DE72EC7763F00ABCD93 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		C77C3DE82EC7763F00ABCD93 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		C77C3DEA2EC7763F00ABCD93 /* LeaderboardHusky.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LeaderboardHusky.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		C77C3D2C2EC76FB300ABCD93 /* Exceptions for "LeaderboardHusky" folder in "LeaderboardHusky" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = C77C3D162EC76FB200ABCD93 /* LeaderboardHusky */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		C77C3D192EC76FB200ABCD93 /* LeaderboardHusky */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				C77C3D2C2EC76FB300ABCD93 /* Exceptions for "LeaderboardHusky" folder in "LeaderboardHusky" target */,
-			);
-			path = LeaderboardHusky;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		C77C3D142EC76FB200ABCD93 /* Frameworks */ = {
@@ -45,7 +40,7 @@
 		C77C3D0E2EC76FB200ABCD93 = {
 			isa = PBXGroup;
 			children = (
-				C77C3D192EC76FB200ABCD93 /* LeaderboardHusky */,
+				C77C3DE92EC7763F00ABCD93 /* LeaderboardHusky */,
 				C77C3D182EC76FB200ABCD93 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -56,6 +51,28 @@
 				C77C3D172EC76FB200ABCD93 /* LeaderboardHusky.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		C77C3DE92EC7763F00ABCD93 /* LeaderboardHusky */ = {
+			isa = PBXGroup;
+			children = (
+				C77C3DF22EC7764300ABCD93 /* App */,
+				C77C3DE22EC7763F00ABCD93 /* Assets.xcassets */,
+				C77C3DE32EC7763F00ABCD93 /* Info.plist */,
+				C77C3DE52EC7763F00ABCD93 /* LaunchScreen.storyboard */,
+				C77C3DE72EC7763F00ABCD93 /* MainViewController.swift */,
+				C77C3DE62EC7763F00ABCD93 /* LeaderboardHusky.xcdatamodeld */,
+			);
+			path = LeaderboardHusky;
+			sourceTree = "<group>";
+		};
+		C77C3DF22EC7764300ABCD93 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				C77C3DE12EC7763F00ABCD93 /* AppDelegate.swift */,
+				C77C3DE82EC7763F00ABCD93 /* SceneDelegate.swift */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -72,9 +89,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				C77C3D192EC76FB200ABCD93 /* LeaderboardHusky */,
 			);
 			name = LeaderboardHusky;
 			packageProductDependencies = (
@@ -122,6 +136,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C77C3DEB2EC7763F00ABCD93 /* Assets.xcassets in Resources */,
+				C77C3DED2EC7763F00ABCD93 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,10 +148,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C77C3DEE2EC7763F00ABCD93 /* AppDelegate.swift in Sources */,
+				C77C3DEF2EC7763F00ABCD93 /* LeaderboardHusky.xcdatamodeld in Sources */,
+				C77C3DF02EC7763F00ABCD93 /* MainViewController.swift in Sources */,
+				C77C3DF12EC7763F00ABCD93 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C77C3DE52EC7763F00ABCD93 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C77C3DE42EC7763F00ABCD93 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		C77C3D2E2EC76FB300ABCD93 /* Debug */ = {
@@ -149,7 +180,6 @@
 				INFOPLIST_FILE = LeaderboardHusky/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
@@ -181,7 +211,6 @@
 				INFOPLIST_FILE = LeaderboardHusky/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
@@ -343,6 +372,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C77C3DE62EC7763F00ABCD93 /* LeaderboardHusky.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C77C3DEA2EC7763F00ABCD93 /* LeaderboardHusky.xcdatamodel */,
+			);
+			currentVersion = C77C3DEA2EC7763F00ABCD93 /* LeaderboardHusky.xcdatamodel */;
+			path = LeaderboardHusky.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = C77C3D0F2EC76FB200ABCD93 /* Project object */;
 }
