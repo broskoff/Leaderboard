@@ -1,24 +1,19 @@
-//
-//  SceneDelegate.swift
-//  LeaderboardHusky
-//
-//  Created by Tanya G. on 14.11.2025.
-//
-
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var appController = CoordinatorFactory().createAppCoordinator(navigationController: UINavigationController())
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         window = UIWindow(windowScene: windowScene)
-        let vc = MainViewController()
-        let navVC = UINavigationController(rootViewController: vc)
-        window?.rootViewController = navVC
+        window?.rootViewController = appController.navigationController
+        
+        appController.start()
+        
         window?.makeKeyAndVisible()
     }
 
@@ -52,7 +47,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Save changes in the application's managed object context when the application transitions to the background.
         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
     }
-
-
 }
-
