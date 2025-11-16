@@ -11,8 +11,10 @@ final class WorkoutsListView: UIView, IWorkoutsListView {
     lazy var workoutsLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
-        layout.minimumLineSpacing = 8
+        layout.sectionInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+        layout.minimumLineSpacing = 16
+        layout.minimumInteritemSpacing = 12
+        
         return layout
     }()
     
@@ -49,7 +51,7 @@ private extension WorkoutsListView {
     func addConstraints() {
         workoutsCollectionView.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide)
-            make.leading.trailing.equalTo(safeAreaLayoutGuide).inset(16)
+            make.leading.trailing.equalTo(safeAreaLayoutGuide)
             make.bottom.equalTo(safeAreaLayoutGuide)
         }
     }

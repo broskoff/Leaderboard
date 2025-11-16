@@ -18,9 +18,14 @@ final class WorkoutsListCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func setData(workout: String, date: String) {
+        workoutImage.image = UIImage(named: workout)
+        workoutDataLabel.text = date
+    }
+
+    
     private func configCell() {
-        backgroundColor = .purple
-        layer.cornerRadius = 12
+//        backgroundColor = .purple
         
         setupElements()
         addSubviews()
@@ -28,13 +33,13 @@ final class WorkoutsListCollectionViewCell: UICollectionViewCell {
     }
     
     private func setupElements() {
-        workoutImage.image = UIImage(named: "1")
         workoutImage.contentMode = .scaleAspectFill
         workoutImage.layer.cornerRadius = 12
         workoutImage.clipsToBounds = true
         
         workoutDataLabel.textAlignment = .center
-        workoutDataLabel.text = "12.11.2025"
+        workoutDataLabel.backgroundColor = .white
+        workoutDataLabel.font = .systemFont(ofSize: 16, weight: .medium)
     }
     
     private func addSubviews() {
@@ -43,14 +48,14 @@ final class WorkoutsListCollectionViewCell: UICollectionViewCell {
     }
     
     private func addConstraint() {
-        workoutImage.snp.makeConstraints { make in
-            make.top.leading.trailing.equalToSuperview()// отступы от границ
-            make.height.equalTo(contentView.snp.height).multipliedBy(0.95)
+        workoutImage.snp.makeConstraints {
+            $0.top.left.right.equalToSuperview()
+            $0.height.equalTo(workoutImage.snp.width)
         }
         
-        workoutDataLabel.snp.makeConstraints { make in
-            make.top.equalTo(workoutImage.snp.bottom)
-            make.centerX.equalTo(workoutImage)
+        workoutDataLabel.snp.makeConstraints {
+            $0.top.equalTo(workoutImage.snp.bottom).offset(4)
+            $0.centerX.equalToSuperview()
         }
     }
 }

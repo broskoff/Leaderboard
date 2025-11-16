@@ -3,6 +3,7 @@ import UIKit
 final class WorkoutsListViewController: UIViewController {
     
     let workoutsListView = WorkoutsListView()
+    let workouts = WorkoutModel.create()
     
     override func loadView() {
         view = workoutsListView
@@ -31,9 +32,14 @@ extension WorkoutsListViewController: UICollectionViewDataSource {
         return 10
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = workoutsListView.workoutsCollectionView.dequeueReusableCell(withReuseIdentifier: WorkoutsListCollectionViewCell.id, for: indexPath)
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = workoutsListView.workoutsCollectionView.dequeueReusableCell(withReuseIdentifier: WorkoutsListCollectionViewCell.id, for: indexPath) as? WorkoutsListCollectionViewCell else {
+            return UICollectionViewCell()
+        }
         
+        let workout = workouts[indexPath.row]
+        cell.setData(workout: workout.image, date: workout.date)
         return cell
     }
 }
@@ -49,6 +55,6 @@ extension WorkoutsListViewController: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: 170, height: 210)
+        return CGSize(width: 170, height: 190)
     }
 }

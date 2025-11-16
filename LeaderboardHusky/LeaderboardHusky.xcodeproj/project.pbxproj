@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C71769462EC991B9003BCC98 /* WorkoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71769452EC991B9003BCC98 /* WorkoutModel.swift */; };
 		C77C3DEB2EC7763F00ABCD93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C77C3DE22EC7763F00ABCD93 /* Assets.xcassets */; };
 		C77C3DED2EC7763F00ABCD93 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C77C3DE52EC7763F00ABCD93 /* LaunchScreen.storyboard */; };
 		C77C3DEE2EC7763F00ABCD93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77C3DE12EC7763F00ABCD93 /* AppDelegate.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C71769452EC991B9003BCC98 /* WorkoutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutModel.swift; sourceTree = "<group>"; };
 		C77C3D172EC76FB200ABCD93 /* LeaderboardHusky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LeaderboardHusky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C77C3DE12EC7763F00ABCD93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C77C3DE22EC7763F00ABCD93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 		C7AE19D32EC890FE00D8C2D8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C71769452EC991B9003BCC98 /* WorkoutModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 				C77C3DEE2EC7763F00ABCD93 /* AppDelegate.swift in Sources */,
 				C77C3DEF2EC7763F00ABCD93 /* LeaderboardHusky.xcdatamodeld in Sources */,
 				C7AE19C12EC8512B00D8C2D8 /* AppCoordinator.swift in Sources */,
+				C71769462EC991B9003BCC98 /* WorkoutModel.swift in Sources */,
 				C7AE19C62EC8519800D8C2D8 /* ICoordinator.swift in Sources */,
 				C7AE19DC2EC8A77200D8C2D8 /* WorkoutsListCollectionViewCell.swift in Sources */,
 				C7AE19D22EC8802D00D8C2D8 /* ScreenFactory.swift in Sources */,
