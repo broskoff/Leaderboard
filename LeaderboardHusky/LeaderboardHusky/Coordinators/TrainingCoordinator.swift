@@ -15,10 +15,20 @@ class TrainingCoordinator: ICoordinator {
     
     func showWorkoutsListViewController() {
         //возможно вместо фабрикиЭкранов будет фабрикаБилдеров которая будет собирать МВП-экран
-        let viewController = ScreenFactory().createWorkoutsListScreen()
+        let controller = ScreenFactory().createWorkoutsListScreen()
         
         //тут еще добавится код который захватывает ячейку и передает инфу на следующий экран
+        controller.completionHandler = { [weak self] workoutId in
+            self?.showWorkoutSelectedViewController(workoutId: workoutId)
+            
+        }
         
-        navigationController.pushViewController(viewController, animated: true)
+        navigationController.pushViewController(controller, animated: true)
+    }
+    
+    func showWorkoutSelectedViewController(workoutId: Int) {
+        let controller = ScreenFactory().createWorkoutSelectedScreen(workoutId: workoutId)
+        
+        navigationController.pushViewController(controller, animated: true)
     }
 }

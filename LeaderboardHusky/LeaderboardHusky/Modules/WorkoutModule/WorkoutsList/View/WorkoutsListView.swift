@@ -1,12 +1,7 @@
 import UIKit
 import SnapKit
 
-protocol IWorkoutsListView: AnyObject {
-    
-    var workoutsCollectionView: UICollectionView { get }
-}
-
-final class WorkoutsListView: UIView, IWorkoutsListView {
+final class WorkoutsListView: UIView {
     
     lazy var workoutsLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()

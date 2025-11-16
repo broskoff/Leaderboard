@@ -1,35 +1,58 @@
 import UIKit
 
-final class WorkoutsListViewController: UIViewController {
+protocol IWorkoutsListView: AnyObject {
+    func setDataInCell(_ data: [IWorkoutsModel])
+}
+
+final class WorkoutsListViewController: UIViewController, IWorkoutsListView, IFlowController  {
+    var completionHandler: ((Int) -> ())?
+    var workoutsListPresenter: IWorkoutsListPresenter!
     
-    let workoutsListView = WorkoutsListView()
-    let workouts = WorkoutModel.create()
+    private let workoutsListView = WorkoutsListView()
+    private var workouts: [IWorkoutsModel]!
     
     override func loadView() {
         view = workoutsListView
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "Тренировки дня"
         
         configWorkoutsCollectionView()
+        workoutsListPresenter.getData()
     }
     
     private func configWorkoutsCollectionView() {
         workoutsListView.workoutsCollectionView.dataSource = self
+//коллекция, если что-то произойдётся — тап по ячейке — зови МЕНЯ. «меня» = ViewController (self).
         workoutsListView.workoutsCollectionView.delegate = self
         workoutsListView.workoutsCollectionView.register(
             WorkoutsListCollectionViewCell.self,
             forCellWithReuseIdentifier: WorkoutsListCollectionViewCell.id
         )
     }
+    
+    func setDataInCell(_ data: [IWorkoutsModel]) {
+        workouts = data
+        workoutsListView.workoutsCollectionView.reloadData()
+    }
+}
+
+//ViewController делегат коллекции, решает что делать если над коллекцией совершили действие
+extension WorkoutsListViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedWorkout = workouts[indexPath.row].id
+        completionHandler?(selectedWorkout)
+    }
 }
 
 extension WorkoutsListViewController: UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return workouts.count
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -44,10 +67,6 @@ extension WorkoutsListViewController: UICollectionViewDataSource {
     }
 }
 
-
-extension WorkoutsListViewController: UICollectionViewDelegate  {
-    
-}
 
 extension WorkoutsListViewController: UICollectionViewDelegateFlowLayout {
     

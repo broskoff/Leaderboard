@@ -1,10 +1,19 @@
 import Foundation
 
-struct WorkoutModel {
-    let id: Int
-    let date: String
-    let image: String
-    let description: String
+protocol IWorkoutsModel {
+    var id: Int { get set }
+    var date: String { get set }
+    var image: String { get set }
+    var description: String { get set }
+    
+    static func create() -> [WorkoutModel]
+}
+
+struct WorkoutModel: IWorkoutsModel {
+    var id: Int
+    var date: String
+    var image: String
+    var description: String
     
     static func create() -> [WorkoutModel] {
         var workouts = [WorkoutModel]()
@@ -14,7 +23,7 @@ struct WorkoutModel {
         formatter.dateStyle = .short
 
         for i in 1...10 {
-            date += 1
+            date += 86400 //текущая дата + 86400 сек (это 1 день)
             let dateString = formatter.string(from: date)
             let workout = WorkoutModel(id: i, date: dateString, image: "\(i)", description: "Потная треня")
             workouts.append(workout)

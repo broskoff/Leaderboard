@@ -2,6 +2,5 @@ import Foundation
 
 protocol IFlowController {
     
-    associatedtype T
-    var completionHandler: ((T) -> ())? { get set }
+    var completionHandler: ((Int) -> ())? { get set }
 }

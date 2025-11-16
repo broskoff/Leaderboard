@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C71769462EC991B9003BCC98 /* WorkoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71769452EC991B9003BCC98 /* WorkoutModel.swift */; };
+		C71769482EC9AA02003BCC98 /* WorkoutsListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71769472EC9AA02003BCC98 /* WorkoutsListPresenter.swift */; };
 		C77C3DEB2EC7763F00ABCD93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C77C3DE22EC7763F00ABCD93 /* Assets.xcassets */; };
 		C77C3DED2EC7763F00ABCD93 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C77C3DE52EC7763F00ABCD93 /* LaunchScreen.storyboard */; };
 		C77C3DEE2EC7763F00ABCD93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77C3DE12EC7763F00ABCD93 /* AppDelegate.swift */; };
@@ -23,10 +24,12 @@
 		C7AE19D72EC892F800D8C2D8 /* WorkoutsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AE19D62EC892F800D8C2D8 /* WorkoutsListView.swift */; };
 		C7AE19DA2EC896CE00D8C2D8 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = C7AE19D92EC896CE00D8C2D8 /* SnapKit */; };
 		C7AE19DC2EC8A77200D8C2D8 /* WorkoutsListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AE19DB2EC8A77200D8C2D8 /* WorkoutsListCollectionViewCell.swift */; };
+		C7C5AA862ECA1F870078F182 /* WorkoutSelectedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C5AA852ECA1F870078F182 /* WorkoutSelectedViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C71769452EC991B9003BCC98 /* WorkoutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutModel.swift; sourceTree = "<group>"; };
+		C71769472EC9AA02003BCC98 /* WorkoutsListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsListPresenter.swift; sourceTree = "<group>"; };
 		C77C3D172EC76FB200ABCD93 /* LeaderboardHusky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LeaderboardHusky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C77C3DE12EC7763F00ABCD93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C77C3DE22EC7763F00ABCD93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -43,6 +46,7 @@
 		C7AE19D12EC8802D00D8C2D8 /* ScreenFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenFactory.swift; sourceTree = "<group>"; };
 		C7AE19D62EC892F800D8C2D8 /* WorkoutsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsListView.swift; sourceTree = "<group>"; };
 		C7AE19DB2EC8A77200D8C2D8 /* WorkoutsListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsListCollectionViewCell.swift; sourceTree = "<group>"; };
+		C7C5AA852ECA1F870078F182 /* WorkoutSelectedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSelectedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +61,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C71769492ECA100D003BCC98 /* WorkoutSelected */ = {
+			isa = PBXGroup;
+			children = (
+				C717694B2ECA1046003BCC98 /* View */,
+				C717694A2ECA103D003BCC98 /* Presenter */,
+			);
+			path = WorkoutSelected;
+			sourceTree = "<group>";
+		};
+		C717694A2ECA103D003BCC98 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		C717694B2ECA1046003BCC98 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C7C5AA852ECA1F870078F182 /* WorkoutSelectedViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		C77C3D0E2EC76FB200ABCD93 = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +164,8 @@
 		C7AE19CF2EC8747700D8C2D8 /* WorkoutModule */ = {
 			isa = PBXGroup;
 			children = (
+				C7AE19D32EC890FE00D8C2D8 /* Model */,
+				C71769492ECA100D003BCC98 /* WorkoutSelected */,
 				C7AE19D02EC874EB00D8C2D8 /* WorkoutsList */,
 			);
 			path = WorkoutModule;
@@ -144,7 +174,6 @@
 		C7AE19D02EC874EB00D8C2D8 /* WorkoutsList */ = {
 			isa = PBXGroup;
 			children = (
-				C7AE19D32EC890FE00D8C2D8 /* Model */,
 				C7AE19D42EC8910900D8C2D8 /* View */,
 				C7AE19D52EC8910E00D8C2D8 /* Presenter */,
 			);
@@ -172,6 +201,7 @@
 		C7AE19D52EC8910E00D8C2D8 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				C71769472EC9AA02003BCC98 /* WorkoutsListPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -255,10 +285,12 @@
 			files = (
 				C7AE19D72EC892F800D8C2D8 /* WorkoutsListView.swift in Sources */,
 				C77C3DEE2EC7763F00ABCD93 /* AppDelegate.swift in Sources */,
+				C71769482EC9AA02003BCC98 /* WorkoutsListPresenter.swift in Sources */,
 				C77C3DEF2EC7763F00ABCD93 /* LeaderboardHusky.xcdatamodeld in Sources */,
 				C7AE19C12EC8512B00D8C2D8 /* AppCoordinator.swift in Sources */,
 				C71769462EC991B9003BCC98 /* WorkoutModel.swift in Sources */,
 				C7AE19C62EC8519800D8C2D8 /* ICoordinator.swift in Sources */,
+				C7C5AA862ECA1F870078F182 /* WorkoutSelectedViewController.swift in Sources */,
 				C7AE19DC2EC8A77200D8C2D8 /* WorkoutsListCollectionViewCell.swift in Sources */,
 				C7AE19D22EC8802D00D8C2D8 /* ScreenFactory.swift in Sources */,
 				C7AE19C72EC8519800D8C2D8 /* IFlowController.swift in Sources */,
