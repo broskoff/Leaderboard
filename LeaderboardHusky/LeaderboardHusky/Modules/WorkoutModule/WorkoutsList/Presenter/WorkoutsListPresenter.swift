@@ -1,5 +1,3 @@
-import Foundation
-
 protocol IWorkoutsListPresenter {
     func getData()
 }

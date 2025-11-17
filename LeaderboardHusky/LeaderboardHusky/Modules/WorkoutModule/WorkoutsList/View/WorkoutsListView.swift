@@ -23,7 +23,7 @@ final class WorkoutsListView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        configView()
+        configureUI()
     }
     
     required init?(coder: NSCoder) {
@@ -32,7 +32,7 @@ final class WorkoutsListView: UIView {
 }
 
 private extension WorkoutsListView {
-    func configView() {
+    func configureUI() {
         backgroundColor = .white
         
         addSubviews()
@@ -44,10 +44,10 @@ private extension WorkoutsListView {
     }
     
     func addConstraints() {
-        workoutsCollectionView.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide)
-            make.leading.trailing.equalTo(safeAreaLayoutGuide)
-            make.bottom.equalTo(safeAreaLayoutGuide)
+        workoutsCollectionView.snp.makeConstraints {
+            $0.top.equalTo(safeAreaLayoutGuide)
+            $0.leading.trailing.equalTo(safeAreaLayoutGuide)
+            $0.bottom.equalTo(safeAreaLayoutGuide)
         }
     }
 }

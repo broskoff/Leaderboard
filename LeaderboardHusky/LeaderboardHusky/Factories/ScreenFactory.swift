@@ -1,4 +1,3 @@
-import Foundation
 import UIKit
 
 class ScreenFactory {
@@ -13,7 +12,13 @@ class ScreenFactory {
     }
     
     func createWorkoutSelectedScreen(workoutId: Int) -> WorkoutSelectedViewController {
-        WorkoutSelectedViewController()
+        let model = WorkoutModel.create()
+        let view = WorkoutSelectedViewController()
+        let presenter = WorkoutSelectedPresenter(model: model, view: view, selectedWorkoutID: workoutId) //передать workoutId с первого экрана
+        
+        view.workoutSelectedPresenter = presenter
+        
+        return view
     }
 }
  

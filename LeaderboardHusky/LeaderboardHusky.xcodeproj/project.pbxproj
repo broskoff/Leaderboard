@@ -25,6 +25,9 @@
 		C7AE19DA2EC896CE00D8C2D8 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = C7AE19D92EC896CE00D8C2D8 /* SnapKit */; };
 		C7AE19DC2EC8A77200D8C2D8 /* WorkoutsListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AE19DB2EC8A77200D8C2D8 /* WorkoutsListCollectionViewCell.swift */; };
 		C7C5AA862ECA1F870078F182 /* WorkoutSelectedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C5AA852ECA1F870078F182 /* WorkoutSelectedViewController.swift */; };
+		C7D1BAD72ECAB76800230CF2 /* WorkoutSelectedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D1BAD62ECAB76800230CF2 /* WorkoutSelectedView.swift */; };
+		C7D1BAD92ECAC83C00230CF2 /* Plug.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D1BAD82ECAC83C00230CF2 /* Plug.swift */; };
+		C7D1BADB2ECAD89A00230CF2 /* WorkoutSelectedPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D1BADA2ECAD89A00230CF2 /* WorkoutSelectedPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +50,9 @@
 		C7AE19D62EC892F800D8C2D8 /* WorkoutsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsListView.swift; sourceTree = "<group>"; };
 		C7AE19DB2EC8A77200D8C2D8 /* WorkoutsListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsListCollectionViewCell.swift; sourceTree = "<group>"; };
 		C7C5AA852ECA1F870078F182 /* WorkoutSelectedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSelectedViewController.swift; sourceTree = "<group>"; };
+		C7D1BAD62ECAB76800230CF2 /* WorkoutSelectedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSelectedView.swift; sourceTree = "<group>"; };
+		C7D1BAD82ECAC83C00230CF2 /* Plug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plug.swift; sourceTree = "<group>"; };
+		C7D1BADA2ECAD89A00230CF2 /* WorkoutSelectedPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSelectedPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +79,7 @@
 		C717694A2ECA103D003BCC98 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				C7D1BADA2ECAD89A00230CF2 /* WorkoutSelectedPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -81,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				C7C5AA852ECA1F870078F182 /* WorkoutSelectedViewController.swift */,
+				C7D1BAD62ECAB76800230CF2 /* WorkoutSelectedView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -113,6 +121,7 @@
 				C77C3DE32EC7763F00ABCD93 /* Info.plist */,
 				C77C3DE52EC7763F00ABCD93 /* LaunchScreen.storyboard */,
 				C77C3DE62EC7763F00ABCD93 /* LeaderboardHusky.xcdatamodeld */,
+				C7D1BAD82ECAC83C00230CF2 /* Plug.swift */,
 			);
 			path = LeaderboardHusky;
 			sourceTree = "<group>";
@@ -284,13 +293,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7AE19D72EC892F800D8C2D8 /* WorkoutsListView.swift in Sources */,
+				C7D1BAD92ECAC83C00230CF2 /* Plug.swift in Sources */,
 				C77C3DEE2EC7763F00ABCD93 /* AppDelegate.swift in Sources */,
 				C71769482EC9AA02003BCC98 /* WorkoutsListPresenter.swift in Sources */,
+				C7D1BAD72ECAB76800230CF2 /* WorkoutSelectedView.swift in Sources */,
 				C77C3DEF2EC7763F00ABCD93 /* LeaderboardHusky.xcdatamodeld in Sources */,
 				C7AE19C12EC8512B00D8C2D8 /* AppCoordinator.swift in Sources */,
 				C71769462EC991B9003BCC98 /* WorkoutModel.swift in Sources */,
 				C7AE19C62EC8519800D8C2D8 /* ICoordinator.swift in Sources */,
 				C7C5AA862ECA1F870078F182 /* WorkoutSelectedViewController.swift in Sources */,
+				C7D1BADB2ECAD89A00230CF2 /* WorkoutSelectedPresenter.swift in Sources */,
 				C7AE19DC2EC8A77200D8C2D8 /* WorkoutsListCollectionViewCell.swift in Sources */,
 				C7AE19D22EC8802D00D8C2D8 /* ScreenFactory.swift in Sources */,
 				C7AE19C72EC8519800D8C2D8 /* IFlowController.swift in Sources */,

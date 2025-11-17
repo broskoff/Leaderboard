@@ -25,7 +25,10 @@ struct WorkoutModel: IWorkoutsModel {
         for i in 1...10 {
             date += 86400 //текущая дата + 86400 сек (это 1 день)
             let dateString = formatter.string(from: date)
-            let workout = WorkoutModel(id: i, date: dateString, image: "\(i)", description: "Потная треня")
+            let workout = WorkoutModel(id: i,
+                                       date: dateString,
+                                       image: "\(i)",
+                                       description: Plug.arrayplugDescription[i - 1]) //заглушка
             workouts.append(workout)
         }
         
