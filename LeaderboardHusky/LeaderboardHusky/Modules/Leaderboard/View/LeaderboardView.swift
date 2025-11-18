@@ -2,9 +2,11 @@ import UIKit
 import SnapKit
 
 final class LeaderboardView: UIView {
-    private var leaderboardSegmentControl: UISegmentedControl!
-    private var leaderboardTableView: UITableView!
-    private var addResultButton: UIButton!
+    
+    var leaderboardTableView = UITableView()
+    var leaderboardSegmentControl = UISegmentedControl(items: ["Парни", "Девушки"])
+    
+    private var addResultButton = UIButton(type: .system)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -28,15 +30,12 @@ private extension LeaderboardView {
     }
     
     func setupElements() {
-        leaderboardSegmentControl = UISegmentedControl(items: ["Парни", "Девушки"])
         leaderboardSegmentControl.selectedSegmentIndex = 0
         
-        leaderboardTableView = UITableView()
-        leaderboardTableView.backgroundColor = .red
+//        leaderboardTableView.backgroundColor = .red
         leaderboardTableView.separatorStyle = .none
         leaderboardTableView.showsVerticalScrollIndicator = false
         
-        addResultButton = UIButton(type: .system)
         addResultButton.setTitle("+", for: .normal)
         addResultButton.titleLabel?.font = .systemFont(ofSize: 32, weight: .bold)
         addResultButton.backgroundColor = .systemBlue
@@ -68,7 +67,7 @@ private extension LeaderboardView {
         
         addResultButton.snp.makeConstraints {
             $0.width.height.equalTo(56)
-            $0.trailing.equalToSuperview().inset(16)
+            $0.trailing.equalToSuperview().inset(24)
             $0.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).inset(16)
         }
     }

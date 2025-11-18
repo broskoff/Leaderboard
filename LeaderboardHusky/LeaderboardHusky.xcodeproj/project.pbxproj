@@ -31,6 +31,7 @@
 		C7D1BAE12ECC2EE300230CF2 /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D1BAE02ECC2EE300230CF2 /* LeaderboardView.swift */; };
 		C7D1BAE32ECC2EF700230CF2 /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D1BAE22ECC2EF700230CF2 /* LeaderboardViewController.swift */; };
 		C7D1BAE72ECC400400230CF2 /* LeaderboardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D1BAE62ECC400400230CF2 /* LeaderboardTableViewCell.swift */; };
+		C7D1BAE92ECC648500230CF2 /* MockDataForLeaderboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D1BAE82ECC648500230CF2 /* MockDataForLeaderboard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,7 @@
 		C7D1BAE02ECC2EE300230CF2 /* LeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
 		C7D1BAE22ECC2EF700230CF2 /* LeaderboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
 		C7D1BAE62ECC400400230CF2 /* LeaderboardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardTableViewCell.swift; sourceTree = "<group>"; };
+		C7D1BAE82ECC648500230CF2 /* MockDataForLeaderboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataForLeaderboard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -252,6 +254,7 @@
 		C7D1BADF2ECB6B3B00230CF2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C7D1BAE82ECC648500230CF2 /* MockDataForLeaderboard.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 				C7AE19D22EC8802D00D8C2D8 /* ScreenFactory.swift in Sources */,
 				C7AE19C72EC8519800D8C2D8 /* IFlowController.swift in Sources */,
 				C7AE19C92EC8542E00D8C2D8 /* TrainingCoordinator.swift in Sources */,
+				C7D1BAE92ECC648500230CF2 /* MockDataForLeaderboard.swift in Sources */,
 				C7D1BAE12ECC2EE300230CF2 /* LeaderboardView.swift in Sources */,
 				C7AE19CD2EC859F900D8C2D8 /* CoordinatorFactory.swift in Sources */,
 				C77C3DF02EC7763F00ABCD93 /* WorkoutsListViewController.swift in Sources */,
