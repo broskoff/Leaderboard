@@ -2,12 +2,13 @@ import UIKit
 import SnapKit
 
 final class WorkoutSelectedView: UIView {
+    
     var workoutImageView = UIImageView()
     var workoutDescriptionTV = UITextView()
     
-    private var scrollView = UIScrollView()
-    private var stackView = UIStackView()
-    private var leaderboardButton = UIButton(type: .system)
+    private var scrollView: UIScrollView!
+    private var stackView: UIStackView!
+    private var leaderboardButton: UIButton!
 //    private var activityIndicatorView = UIActivityIndicatorView()
     
     override init(frame: CGRect) {
@@ -32,6 +33,9 @@ private extension WorkoutSelectedView {
     }
     
     func setupElements() {
+        scrollView = UIScrollView()
+        
+        stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 16
         
@@ -39,6 +43,7 @@ private extension WorkoutSelectedView {
         workoutImageView.layer.cornerRadius = 12
         workoutImageView.clipsToBounds = true
         
+        leaderboardButton = UIButton(type: .system)
         leaderboardButton.backgroundColor = .black
         leaderboardButton.setTitle("Лидерборд", for: .normal)
         leaderboardButton.titleLabel?.font = .systemFont(ofSize: 22, weight: .regular)

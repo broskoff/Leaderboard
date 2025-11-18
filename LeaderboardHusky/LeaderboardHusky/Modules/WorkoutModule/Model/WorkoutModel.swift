@@ -14,7 +14,7 @@ struct WorkoutModel: IWorkoutsModel {
     var date: String
     var image: String
     var description: String
-    
+     
     static func create() -> [WorkoutModel] {
         var workouts = [WorkoutModel]()
         var date: Date = .now
