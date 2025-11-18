@@ -4,7 +4,8 @@ protocol IWorkoutSelectedView: AnyObject {
     func setDataForImageAndDescription(workouts: [IWorkoutsModel], id selectedWorkout: Int)
 }
 
-final class WorkoutSelectedViewController: UIViewController, IWorkoutSelectedView  {
+final class WorkoutSelectedViewController: UIViewController, IWorkoutSelectedView, IFlowController  {
+    var completionHandler: ((Int) -> ())?
    
     var workoutSelectedPresenter: IWorkoutPresenter!
     
@@ -22,6 +23,14 @@ final class WorkoutSelectedViewController: UIViewController, IWorkoutSelectedVie
         super.viewDidLoad()
         
         workoutSelectedPresenter.getData()
+        
+        workoutSelectedView.leaderboardButton.addTarget(self,
+                                                        action: #selector(buttonTapped),
+                                                        for: .touchUpInside)
+    }
+    
+    @objc func buttonTapped() {
+        completionHandler?(selectedWorkoutId)
     }
     
     func setDataForImageAndDescription(workouts: [any IWorkoutsModel], id: Int) {
@@ -30,9 +39,10 @@ final class WorkoutSelectedViewController: UIViewController, IWorkoutSelectedVie
                 workoutSelectedView.workoutImageView.image = UIImage(named: workout.image)
                 workoutSelectedView.workoutDescriptionTV.text = workout.description
                 title = "Тренировка \(workout.date)"
+                
+                selectedWorkoutId = workout.id
             }
         }
-        
     }
 }
 

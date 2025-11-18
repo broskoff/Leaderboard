@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C71769462EC991B9003BCC98 /* WorkoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71769452EC991B9003BCC98 /* WorkoutModel.swift */; };
 		C71769482EC9AA02003BCC98 /* WorkoutsListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71769472EC9AA02003BCC98 /* WorkoutsListPresenter.swift */; };
+		C7186D652ECCCDE6008CFE32 /* LeaderboardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7186D642ECCCDE6008CFE32 /* LeaderboardPresenter.swift */; };
 		C77C3DEB2EC7763F00ABCD93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C77C3DE22EC7763F00ABCD93 /* Assets.xcassets */; };
 		C77C3DED2EC7763F00ABCD93 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C77C3DE52EC7763F00ABCD93 /* LaunchScreen.storyboard */; };
 		C77C3DEE2EC7763F00ABCD93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77C3DE12EC7763F00ABCD93 /* AppDelegate.swift */; };
@@ -37,6 +38,7 @@
 /* Begin PBXFileReference section */
 		C71769452EC991B9003BCC98 /* WorkoutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutModel.swift; sourceTree = "<group>"; };
 		C71769472EC9AA02003BCC98 /* WorkoutsListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsListPresenter.swift; sourceTree = "<group>"; };
+		C7186D642ECCCDE6008CFE32 /* LeaderboardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardPresenter.swift; sourceTree = "<group>"; };
 		C77C3D172EC76FB200ABCD93 /* LeaderboardHusky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LeaderboardHusky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C77C3DE12EC7763F00ABCD93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C77C3DE22EC7763F00ABCD93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 		C7D1BADD2ECB6B2D00230CF2 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				C7186D642ECCCDE6008CFE32 /* LeaderboardPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 				C7D1BADB2ECAD89A00230CF2 /* WorkoutSelectedPresenter.swift in Sources */,
 				C7AE19DC2EC8A77200D8C2D8 /* WorkoutsListCollectionViewCell.swift in Sources */,
 				C7AE19D22EC8802D00D8C2D8 /* ScreenFactory.swift in Sources */,
+				C7186D652ECCCDE6008CFE32 /* LeaderboardPresenter.swift in Sources */,
 				C7AE19C72EC8519800D8C2D8 /* IFlowController.swift in Sources */,
 				C7AE19C92EC8542E00D8C2D8 /* TrainingCoordinator.swift in Sources */,
 				C7D1BAE92ECC648500230CF2 /* MockDataForLeaderboard.swift in Sources */,

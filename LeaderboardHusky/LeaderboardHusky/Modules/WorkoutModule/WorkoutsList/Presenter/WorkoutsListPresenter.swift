@@ -12,7 +12,6 @@ class WorkoutsListPresenter: IWorkoutsListPresenter {
     }
     
     func getData() {
-        model = WorkoutModel.create()
         view.setDataInCell(model)
     }
 }

@@ -1,10 +1,12 @@
 import UIKit
 
 protocol ILeaderboardView {
-    
+    func setData(workouts: [IWorkoutsModel], id: Int)
 }
 
-final class LeaderboardViewController: UIViewController, ILeaderboardView {
+final class LeaderboardViewController: UIViewController {
+    
+    var leaderboardPresenter: ILeaderboardPresenter!
     
     private let leaderboardView = LeaderboardView()
     
@@ -16,10 +18,10 @@ final class LeaderboardViewController: UIViewController, ILeaderboardView {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        title = "Лидерборд 18.11.2025"
-        
+    
         configLeaderboardTableView()
+        
+        leaderboardPresenter.getData()
         
         //MOCK
         MockData.currentLeaderboard = MockData.boysLeaderboard
@@ -60,7 +62,7 @@ extension LeaderboardViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: LeaderboardTableViewCell.id, for: indexPath) as! LeaderboardTableViewCell
         //MOCK
         let item = MockData.currentLeaderboard[indexPath.row]
-            cell.configure(rank: item.rank, name: item.name, result: item.result)
+        cell.configure(rank: item.rank, name: item.name, result: item.result)
         
         return cell
     }
@@ -69,5 +71,15 @@ extension LeaderboardViewController: UITableViewDataSource {
 extension LeaderboardViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
+    }
+}
+
+extension LeaderboardViewController: ILeaderboardView {
+    func setData(workouts: [IWorkoutsModel], id: Int) {
+        for workout in workouts {
+            if workout.id == id {
+                title = "Лидерборд \(workout.date)"
+            }
+        }
     }
 }

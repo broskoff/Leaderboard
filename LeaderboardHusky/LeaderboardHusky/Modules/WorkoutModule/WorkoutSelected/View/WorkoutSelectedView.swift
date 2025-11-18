@@ -5,10 +5,10 @@ final class WorkoutSelectedView: UIView {
     
     var workoutImageView = UIImageView()
     var workoutDescriptionTV = UITextView()
+    var leaderboardButton: UIButton!
     
     private var scrollView: UIScrollView!
     private var stackView: UIStackView!
-    private var leaderboardButton: UIButton!
 //    private var activityIndicatorView = UIActivityIndicatorView()
     
     override init(frame: CGRect) {

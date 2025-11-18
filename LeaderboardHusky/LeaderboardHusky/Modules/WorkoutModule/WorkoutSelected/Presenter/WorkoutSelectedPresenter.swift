@@ -14,8 +14,6 @@ final class WorkoutSelectedPresenter: IWorkoutPresenter {
     }
     
     func getData() {
-        model = WorkoutModel.create()
-        
         view.setDataForImageAndDescription(workouts: model, id: selectedWorkoutID) //сюда должн передаться id с прошлого экрана
     }
     

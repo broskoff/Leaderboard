@@ -1,6 +1,6 @@
 import UIKit
 
-class TrainingCoordinator: ICoordinator {
+final class TrainingCoordinator: ICoordinator {
     var navigationController: UINavigationController
     var completionCoordinatorHandler: CoordinatorHandler?
     
@@ -14,19 +14,25 @@ class TrainingCoordinator: ICoordinator {
     
     func showWorkoutsListViewController() {
         //возможно вместо фабрикиЭкранов будет фабрикаБилдеров которая будет собирать МВП-экран
-        let controller = /*ScreenFactory().createWorkoutsListScreen()*/LeaderboardViewController()
+        let controller = ScreenFactory.createWorkoutsListScreen()
         
-        //тут еще добавится код который захватывает ячейку и передает инфу на следующий экран
-//        controller.completionHandler = { [weak self] workoutId in
-//            self?.showWorkoutSelectedViewController(workoutId: workoutId)
-//            
-//        }
-        
+        controller.completionHandler = { [weak self] workoutId in
+            self?.showWorkoutSelectedViewController(with: workoutId)
+        }
         navigationController.pushViewController(controller, animated: true)
     }
     
-    func showWorkoutSelectedViewController(workoutId: Int) {
-        let controller = ScreenFactory().createWorkoutSelectedScreen(workoutId: workoutId)
+    func showWorkoutSelectedViewController(with workoutId: Int) {
+        let controller = ScreenFactory.createWorkoutSelectedScreen(workoutId: workoutId)
+        
+        controller.completionHandler = { [weak self] workoutId in
+            self?.showLeaderboardViewController(with: workoutId)
+        }
+        navigationController.pushViewController(controller, animated: true)
+    }
+    
+    func showLeaderboardViewController(with workoutId: Int) {
+        let controller = ScreenFactory.createLeaderboardScreen(workoutId: workoutId)
         
         navigationController.pushViewController(controller, animated: true)
     }
