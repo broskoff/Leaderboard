@@ -1,7 +1,7 @@
 import UIKit
 
 protocol IWorkoutsListView: AnyObject {
-    func setDataInCell(_ data: [IWorkoutsModel])
+    func setDataInCell(_ data: [IWorkoutsListModel])
 }
 
 final class WorkoutsListViewController: UIViewController, IWorkoutsListView, IFlowController  {
@@ -9,7 +9,7 @@ final class WorkoutsListViewController: UIViewController, IWorkoutsListView, IFl
     var workoutsListPresenter: IWorkoutsListPresenter!
     
     private let workoutsListView = WorkoutsListView()
-    private var workouts: [IWorkoutsModel]!
+    private var workouts: [IWorkoutsListModel]!
     
     override func loadView() {
         view = workoutsListView
@@ -26,7 +26,7 @@ final class WorkoutsListViewController: UIViewController, IWorkoutsListView, IFl
     
     private func configWorkoutsCollectionView() {
         workoutsListView.workoutsCollectionView.dataSource = self
-//коллекция, если что-то произойдётся — тап по ячейке — зови МЕНЯ. «меня» = ViewController (self).
+//коллекция, если что-то произойдёт — тап по ячейке — зови МЕНЯ. «меня» = ViewController (self).
         workoutsListView.workoutsCollectionView.delegate = self
         workoutsListView.workoutsCollectionView.register(
             WorkoutsListCollectionViewCell.self,
@@ -34,7 +34,7 @@ final class WorkoutsListViewController: UIViewController, IWorkoutsListView, IFl
         )
     }
     
-    func setDataInCell(_ data: [IWorkoutsModel]) {
+    func setDataInCell(_ data: [IWorkoutsListModel]) {
         workouts = data
         workoutsListView.workoutsCollectionView.reloadData()
     }

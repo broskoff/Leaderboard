@@ -1,7 +1,7 @@
 import UIKit
 
 protocol ILeaderboardView {
-    func setData(workouts: [IWorkoutsModel], id: Int)
+    func setData(workouts: [IWorkoutSelectedModel], workout: (Int, TypeResult, String))
 }
 
 final class LeaderboardViewController: UIViewController {
@@ -75,9 +75,9 @@ extension LeaderboardViewController: UITableViewDelegate {
 }
 
 extension LeaderboardViewController: ILeaderboardView {
-    func setData(workouts: [IWorkoutsModel], id: Int) {
+    func setData(workouts: [IWorkoutSelectedModel], workout: (Int, TypeResult, String)) {
         for workout in workouts {
-            if workout.id == id {
+            if workout.id == workout.id {
                 title = "Лидерборд \(workout.date)"
             }
         }

@@ -3,10 +3,10 @@ protocol IWorkoutsListPresenter {
 }
 
 class WorkoutsListPresenter: IWorkoutsListPresenter {
-    private var model: [IWorkoutsModel]
+    private var model: [IWorkoutsListModel]
     private var view: IWorkoutsListView
     
-    init(model: [IWorkoutsModel], view: IWorkoutsListView) {
+    init(model: [IWorkoutsListModel], view: IWorkoutsListView) {
         self.model = model
         self.view = view
     }

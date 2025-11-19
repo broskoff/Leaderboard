@@ -3,11 +3,11 @@ protocol IWorkoutPresenter {
 }
 
 final class WorkoutSelectedPresenter: IWorkoutPresenter {
-    private var model: [IWorkoutsModel]
+    private var model: [IWorkoutSelectedModel]
     private var view: IWorkoutSelectedView
     var selectedWorkoutID: Int!
     
-    init(model: [IWorkoutsModel], view: IWorkoutSelectedView, selectedWorkoutID: Int!) {
+    init(model: [IWorkoutSelectedModel], view: IWorkoutSelectedView, selectedWorkoutID: Int!) {
         self.model = model
         self.view = view
         self.selectedWorkoutID = selectedWorkoutID

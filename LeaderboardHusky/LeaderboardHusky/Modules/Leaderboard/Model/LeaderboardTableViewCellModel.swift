@@ -1,3 +1,4 @@
+import Foundation
 
 class MockData {
     static var boysLeaderboard: [(rank: Int, name: String, result: Int)] = [
@@ -33,3 +34,10 @@ class MockData {
     static var currentLeaderboard: [(rank: Int, name: String, result: Int)] = []
 }
 
+
+
+struct LeaderboardTableViewCellModel {
+    let rank: Int
+    let name: String
+    let result: String
+}

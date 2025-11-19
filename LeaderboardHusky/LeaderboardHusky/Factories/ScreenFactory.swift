@@ -3,7 +3,7 @@ import UIKit
 final class ScreenFactory {
     
     static func createWorkoutsListScreen() -> WorkoutsListViewController {
-        let model = WorkoutModel.create()
+        let model = WorkoutsListModel.create()
         let view = WorkoutsListViewController()
         let presenter = WorkoutsListPresenter(model: model, view: view)
         
@@ -12,7 +12,7 @@ final class ScreenFactory {
     }
     
     static func createWorkoutSelectedScreen(workoutId: Int) -> WorkoutSelectedViewController {
-        let model = WorkoutModel.create()
+        let model = WorkoutSelectedModel.create()
         let view = WorkoutSelectedViewController()
         let presenter = WorkoutSelectedPresenter(model: model, view: view, selectedWorkoutID: workoutId)
         
@@ -21,10 +21,10 @@ final class ScreenFactory {
         return view
     }
     
-    static func createLeaderboardScreen(workoutId: Int) -> LeaderboardViewController {
-        let model = WorkoutModel.create()
+    static func createLeaderboardScreen(workout: (Int, TypeResult, String)) -> LeaderboardViewController {
+        let model = WorkoutSelectedModel.create()
         let view = LeaderboardViewController()
-        let presenter = LeaderboardPresenter(model: model, view: view, selectedWorkout: workoutId)
+        let presenter = LeaderboardPresenter(model: model, view: view, selectedWorkout: workout)
         
         view.leaderboardPresenter = presenter
         

@@ -1,17 +1,17 @@
 import UIKit
 
 protocol IWorkoutSelectedView: AnyObject {
-    func setDataForImageAndDescription(workouts: [IWorkoutsModel], id selectedWorkout: Int)
+    func setDataForImageAndDescription(workouts: [IWorkoutSelectedModel], id selectedWorkout: Int)
 }
 
-final class WorkoutSelectedViewController: UIViewController, IWorkoutSelectedView, IFlowController  {
-    var completionHandler: ((Int) -> ())?
+final class WorkoutSelectedViewController: UIViewController, IWorkoutSelectedView  {
+    var completionHandler: ((Int, TypeResult, String) -> ())?
    
     var workoutSelectedPresenter: IWorkoutPresenter!
     
     private let workoutSelectedView = WorkoutSelectedView()
-    private var workouts: [IWorkoutsModel]!
-    private var selectedWorkoutId: Int!
+    private var workouts: [IWorkoutSelectedModel]!
+    private var selectedWorkout: IWorkoutSelectedModel!
     
     override func loadView() {
         super.loadView()
@@ -30,17 +30,17 @@ final class WorkoutSelectedViewController: UIViewController, IWorkoutSelectedVie
     }
     
     @objc func buttonTapped() {
-        completionHandler?(selectedWorkoutId)
+        completionHandler?(selectedWorkout.id, selectedWorkout.typeResult, selectedWorkout.date)
     }
     
-    func setDataForImageAndDescription(workouts: [any IWorkoutsModel], id: Int) {
+    func setDataForImageAndDescription(workouts: [any IWorkoutSelectedModel], id: Int) {
        for workout in workouts {
             if workout.id == id {
                 workoutSelectedView.workoutImageView.image = UIImage(named: workout.image)
                 workoutSelectedView.workoutDescriptionTV.text = workout.description
                 title = "Тренировка \(workout.date)"
                 
-                selectedWorkoutId = workout.id
+                selectedWorkout = workout
             }
         }
     }

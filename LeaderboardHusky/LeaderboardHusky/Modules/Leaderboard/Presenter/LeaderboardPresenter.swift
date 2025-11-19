@@ -3,17 +3,19 @@ protocol ILeaderboardPresenter {
 }
 
 class LeaderboardPresenter: ILeaderboardPresenter {
-    private let model: [IWorkoutsModel] //тут наверное уже будет модел ЛБ
-    private let view: ILeaderboardView
-    let selectedWorkout: Int
+    typealias SelectedWorkout = (Int, TypeResult, String)
     
-    init(model: [IWorkoutsModel], view: ILeaderboardView, selectedWorkout: Int) {
+    private let model: [IWorkoutSelectedModel] //тут наверное уже будет модел ЛБ
+    private let view: ILeaderboardView
+    let selectedWorkout: SelectedWorkout
+    
+    init(model: [IWorkoutSelectedModel], view: ILeaderboardView, selectedWorkout: SelectedWorkout) {
         self.model = model
         self.view = view
         self.selectedWorkout = selectedWorkout
     }
     
     func getData() {
-        view.setData(workouts: model, id: selectedWorkout)
+        view.setData(workouts: model, workout: selectedWorkout)
     }
 }
