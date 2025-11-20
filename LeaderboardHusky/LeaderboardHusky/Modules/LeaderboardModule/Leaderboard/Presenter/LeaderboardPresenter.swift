@@ -1,20 +1,19 @@
 protocol ILeaderboardPresenter {
-    var workoutTypeResult: TypeResult { get }
-    
     func getData()
     func selectGender(index: Int)
     func addResult(name: String, result: Int, gender: String)
     func getWorkoutDate()
+    func getworkoutTypeResult()
+    func deleteUserResult(object: UserResult)
 }
 
 
 final class LeaderboardPresenter: ILeaderboardPresenter {
-    
+    private let workoutId: Int
     private let workoutDate: String
+    private var workoutTypeResult: TypeResult
     private var view: ILeaderboardView
     private var dataManager: ILeaderboardDataManager
-    private let workoutId: Int
-    let workoutTypeResult: TypeResult
     
     private var currentGender = "male"
     
@@ -29,6 +28,9 @@ final class LeaderboardPresenter: ILeaderboardPresenter {
         self.workoutDate = selectedWorkout.date
     }
     
+    func getworkoutTypeResult() {
+        view.createAlertAddResult(workoutTypeResult: workoutTypeResult)
+    }
     
     func getWorkoutDate() {
         view.setupLeaderboardTitle(workoutData: workoutDate)
@@ -63,7 +65,6 @@ final class LeaderboardPresenter: ILeaderboardPresenter {
                                   workoutId: workoutId,
                                   typeResult: workoutTypeResult.rawValue)
         }
-        
         loadAndShow()
     }
     
@@ -73,9 +74,15 @@ final class LeaderboardPresenter: ILeaderboardPresenter {
                                              typeResult: workoutTypeResult)
         if users.isEmpty {
             view.showForEmptyLeaderboard(title: "Лидерборд пуст", message: "Пока нет результатов — добавь первый!")
-            view.setLeaderboardData(users: [])
+            view.setLeaderboardData(users: [], workoutTypeResult: workoutTypeResult)
             return
         }
-        view.setLeaderboardData(users: users)
+        view.setLeaderboardData(users: users, workoutTypeResult: workoutTypeResult)
+    }
+    
+    func deleteUserResult(object: UserResult) {
+        dataManager.deleteContext(object: object)
+        
+        loadAndShow()
     }
 }

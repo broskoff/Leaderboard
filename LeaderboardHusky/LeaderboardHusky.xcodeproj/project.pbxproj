@@ -208,7 +208,7 @@
 		C7AE19CE2EC8745D00D8C2D8 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				C7D1BADC2ECB6B1800230CF2 /* Leaderboard */,
+				C7F1A9C42ECF5A0F0032BA03 /* LeaderboardModule */,
 				C7AE19CF2EC8747700D8C2D8 /* WorkoutModule */,
 			);
 			path = Modules;
@@ -294,6 +294,14 @@
 				C7D1BAE82ECC648500230CF2 /* LeaderboardTableViewCellModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		C7F1A9C42ECF5A0F0032BA03 /* LeaderboardModule */ = {
+			isa = PBXGroup;
+			children = (
+				C7D1BADC2ECB6B1800230CF2 /* Leaderboard */,
+			);
+			path = LeaderboardModule;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

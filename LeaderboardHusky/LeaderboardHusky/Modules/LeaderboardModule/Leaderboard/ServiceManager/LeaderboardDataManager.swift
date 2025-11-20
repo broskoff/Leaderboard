@@ -4,6 +4,7 @@ import CoreData
 protocol ILeaderboardDataManager {
     func fetchResults(for workoutId: Int, gender: String, typeResult: TypeResult) -> [UserResult]
     func addResult(name: String, result: Int, gender: String, workoutId: Int, typeResult: String)
+    func deleteContext(object: UserResult)
 }
 
 final class LeaderboardDataManager: ILeaderboardDataManager {
@@ -45,7 +46,6 @@ final class LeaderboardDataManager: ILeaderboardDataManager {
         new.name = name
         new.gender = gender
         new.resultCount = Int16(result)
-        // resultTime оставляем 0 если не используется; можно передать время в секундах при необходимости
         new.resultTime = Int32(result)
         
         
@@ -69,10 +69,20 @@ final class LeaderboardDataManager: ILeaderboardDataManager {
         }
     }
     
-    
     private func fetchWorkout(with id: Int) -> Workout? {
         let request: NSFetchRequest<Workout> = Workout.fetchRequest()
         request.predicate = NSPredicate(format: "id == %d", id)
         return try? context.fetch(request).first
+    }
+    
+    func deleteContext(object: UserResult)  {
+        context.delete(object)
+        
+        do {
+            try context.save()
+        } catch {
+            print("Failed to save result: \(error)")
+        }
+        
     }
 }
