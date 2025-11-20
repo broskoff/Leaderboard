@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  LeaderboardHusky
-//
-//  Created by Tanya G. on 14.11.2025.
-//
-
 import UIKit
 import CoreData
 

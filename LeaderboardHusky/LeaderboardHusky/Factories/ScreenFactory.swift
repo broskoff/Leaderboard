@@ -21,10 +21,10 @@ final class ScreenFactory {
         return view
     }
     
-    static func createLeaderboardScreen(workout: (Int, TypeResult, String)) -> LeaderboardViewController {
-        let model = WorkoutSelectedModel.create()
+    static func createLeaderboardScreen(workout: (id: Int, typeResult: TypeResult, date: String)) -> LeaderboardViewController {
+        let dataManager = LeaderboardDataManager()
         let view = LeaderboardViewController()
-        let presenter = LeaderboardPresenter(model: model, view: view, selectedWorkout: workout)
+        let presenter = LeaderboardPresenter(view: view, selectedWorkout: workout, dataManager: dataManager)
         
         view.leaderboardPresenter = presenter
         

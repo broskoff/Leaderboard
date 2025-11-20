@@ -19,11 +19,10 @@ final class LeaderboardTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //ЭТО ТУТ ДОЛЖНО БЫТЬ?! Кажется в VC или VC/Презентор должен дернуть этот метод
-    func configure(rank: Int, name: String, result: Int) {
-        rankLabel.text = "\(rank)"
-        nameLabel.text = name
-        resultLabel.text = "\(result)"
+    func configure(with model: LeaderboardTableViewCellModel) {
+        rankLabel.text = "\(model.rank)"
+        nameLabel.text = model.name
+        resultLabel.text = model.resultText
     }
 }
 

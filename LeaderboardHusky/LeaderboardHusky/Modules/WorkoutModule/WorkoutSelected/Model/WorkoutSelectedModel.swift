@@ -10,9 +10,9 @@ protocol IWorkoutSelectedModel {
     static func create() -> [WorkoutSelectedModel]
 }
 
-enum TypeResult {
-    case resultCount
-    case resultTime
+enum TypeResult: String {
+    case resultCount = "0"
+    case resultTime = "1"
 }
 
 struct WorkoutSelectedModel: IWorkoutSelectedModel {
@@ -36,7 +36,7 @@ struct WorkoutSelectedModel: IWorkoutSelectedModel {
                                                date: dateString,
                                                image: "\(i)",
                                                description: Plug.arrayplugDescription[i - 1], //заглушка
-                                               typeResult: .resultCount)
+                                               typeResult: .resultTime) //заглушка
             workouts.append(workout)
         }
         

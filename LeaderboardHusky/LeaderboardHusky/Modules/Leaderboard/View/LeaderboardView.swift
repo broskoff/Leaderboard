@@ -2,11 +2,13 @@ import UIKit
 import SnapKit
 
 final class LeaderboardView: UIView {
+    let nameItemBoys = "Парни"
+    let nameItemGirls = "Девушки"
+    let leaderboardTableView = UITableView()
+    var addResultButton = UIButton(type: .system)
     
-    var leaderboardTableView = UITableView()
-    var leaderboardSegmentControl = UISegmentedControl(items: ["Парни", "Девушки"])
+    lazy var leaderboardSegmentControl = UISegmentedControl(items: [nameItemBoys, nameItemGirls])
     
-    private var addResultButton = UIButton(type: .system)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -31,8 +33,7 @@ private extension LeaderboardView {
     
     func setupElements() {
         leaderboardSegmentControl.selectedSegmentIndex = 0
-        
-//        leaderboardTableView.backgroundColor = .red
+
         leaderboardTableView.separatorStyle = .none
         leaderboardTableView.showsVerticalScrollIndicator = false
         
