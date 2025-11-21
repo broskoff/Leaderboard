@@ -23,7 +23,7 @@ final class WorkoutSelectedPresenter: IWorkoutPresenter {
             switch result {
             case .success(let workouts):
                 self.model = workouts
-                view.setDataForImageAndDescription(workouts: model, id: selectedWorkoutID)
+                self.view.setDataForImageAndDescription(workouts: model, id: selectedWorkoutID)
             case .failure(let error):
                 switch error {
                 case .invalidURL:

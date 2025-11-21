@@ -7,7 +7,6 @@ protocol IWorkoutSelectedView: AnyObject {
 
 final class WorkoutSelectedViewController: UIViewController, IWorkoutSelectedView  {
     var completionHandler: ((Int, String, String) -> ())?
-    
     var workoutSelectedPresenter: IWorkoutPresenter?
     
     private let workoutSelectedView = WorkoutSelectedView()
@@ -23,7 +22,6 @@ final class WorkoutSelectedViewController: UIViewController, IWorkoutSelectedVie
         super.viewDidLoad()
         
         workoutSelectedPresenter?.getData()
-        
         workoutSelectedView.leaderboardButton.addTarget(self,
                                                         action: #selector(buttonTapped),
                                                         for: .touchUpInside)
@@ -46,9 +44,9 @@ final class WorkoutSelectedViewController: UIViewController, IWorkoutSelectedVie
                 self.workoutSelectedView.workoutImageView.image = UIImage(data: imageData)
                 self.workoutSelectedView.workoutDescriptionTV.text = workout.description
                 self.title = "\(Headlines.workout.rawValue) \(workout.date)"
+                self.selectedWorkout = workout
                 self.hideLoadingState()
             }
-            self.selectedWorkout = workout
         }
     }
     
@@ -61,4 +59,3 @@ final class WorkoutSelectedViewController: UIViewController, IWorkoutSelectedVie
         workoutSelectedView.activityIndicatorView.stopAnimating()
     }
 }
-

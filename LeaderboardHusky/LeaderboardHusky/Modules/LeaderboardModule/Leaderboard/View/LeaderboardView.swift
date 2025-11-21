@@ -9,7 +9,7 @@ final class LeaderboardView: UIView {
         LeaderboardSegmentControlText.boys.rawValue,
         LeaderboardSegmentControlText.girls.rawValue
     ])
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -22,7 +22,6 @@ final class LeaderboardView: UIView {
 }
 
 private extension LeaderboardView {
-    
     func configureUI() {
         backgroundColor = .white
         
@@ -33,7 +32,7 @@ private extension LeaderboardView {
     
     func setupElements() {
         leaderboardSegmentControl.selectedSegmentIndex = 0
-
+        
         leaderboardTableView.separatorStyle = .none
         leaderboardTableView.showsVerticalScrollIndicator = false
         

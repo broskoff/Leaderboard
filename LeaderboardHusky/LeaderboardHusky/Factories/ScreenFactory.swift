@@ -17,7 +17,6 @@ final class ScreenFactory {
         let presenter = WorkoutSelectedPresenter(view: view, selectedWorkoutID: workoutId, networkManager: networkManager)
         
         view.workoutSelectedPresenter = presenter
-        
         return view
     }
     
@@ -27,8 +26,6 @@ final class ScreenFactory {
         let presenter = LeaderboardPresenter(view: view, selectedWorkout: workout, dataManager: dataManager)
         
         view.leaderboardPresenter = presenter
-        
         return view
     }
 }
- 

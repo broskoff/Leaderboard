@@ -20,5 +20,4 @@ final class AppCoordinator: ICoordinator {
         childCoordinators.append(trainingCoordinator)
         trainingCoordinator.start()
     }
-    
 }

@@ -15,4 +15,3 @@ struct WorkoutSelectedModel: Decodable, IWorkoutSelectedModel {
     var description: String
     var typeResult: String
 }
-

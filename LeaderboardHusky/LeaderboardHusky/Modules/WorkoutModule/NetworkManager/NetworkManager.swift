@@ -17,7 +17,6 @@ enum ServiceError: Error {
 }
 
 final class NetworkManager: INetworkManagerWorkoutsList, INetworkManagerWorkoutSelected {
-    
     private let networkServiceBaseURL = URLText.baseURL.rawValue
     
     func getWorkouts(completion: @escaping (Result<[IWorkoutsListModel], ServiceError>) -> Void) {
@@ -28,7 +27,7 @@ final class NetworkManager: INetworkManagerWorkoutsList, INetworkManagerWorkoutS
         }
         
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
-        
+            
             if let error = error {
                 completion(.failure(.networkError(error)))
                 return
@@ -43,12 +42,13 @@ final class NetworkManager: INetworkManagerWorkoutsList, INetworkManagerWorkoutS
                 default:
                     print("Ошибка")
                     completion(.failure(.badStatusCode(status)))
+                    return
                 }
             }
             
-           guard let data = data else {
-               completion(.failure(.noData))
-               return
+            guard let data = data else {
+                completion(.failure(.noData))
+                return
             }
             
             do {
@@ -69,7 +69,7 @@ final class NetworkManager: INetworkManagerWorkoutsList, INetworkManagerWorkoutS
         }
         
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
-        
+            
             if let error = error {
                 completion(.failure(.networkError(error)))
                 return
@@ -84,12 +84,13 @@ final class NetworkManager: INetworkManagerWorkoutsList, INetworkManagerWorkoutS
                 default:
                     print("Ошибка badStatusCode")
                     completion(.failure(.badStatusCode(status)))
+                    return
                 }
             }
             
-           guard let data = data else {
-               completion(.failure(.noData))
-               return
+            guard let data = data else {
+                completion(.failure(.noData))
+                return
             }
             
             do {

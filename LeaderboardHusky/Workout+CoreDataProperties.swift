@@ -1,14 +1,5 @@
-//
-//  Workout+CoreDataProperties.swift
-//  LeaderboardHusky
-//
-//  Created by Tanya G. on 21.11.2025.
-//
-//
-
 import Foundation
 import CoreData
-
 
 extension Workout {
 
@@ -19,10 +10,8 @@ extension Workout {
     @NSManaged public var id: Int64
     @NSManaged public var typeResult: String?
     @NSManaged public var results: NSSet?
-
 }
 
-// MARK: Generated accessors for results
 extension Workout {
 
     @objc(addResultsObject:)
@@ -36,7 +25,6 @@ extension Workout {
 
     @objc(removeResults:)
     @NSManaged public func removeFromResults(_ values: NSSet)
-
 }
 
 extension Workout : Identifiable {

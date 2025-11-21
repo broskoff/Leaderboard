@@ -2,7 +2,7 @@ protocol IWorkoutsListPresenter {
     func getData()
 }
 
-class WorkoutsListPresenter: IWorkoutsListPresenter {
+final class WorkoutsListPresenter: IWorkoutsListPresenter {
     private var view: IWorkoutsListView
     private var networkManager: INetworkManagerWorkoutsList
     private var model: [IWorkoutsListModel] = []
@@ -14,14 +14,14 @@ class WorkoutsListPresenter: IWorkoutsListPresenter {
     
     func getData() {
         view.setLoadingState()
+        
         networkManager.getWorkouts { [weak self] result in
-            
             guard let self = self else { return }
             
             switch result {
             case .success(let workouts):
                 self.model = workouts
-                view.setDataInCell(self.model)
+                self.view.setDataInCell(self.model)
             case .failure(let error):
                 switch error {
                 case .invalidURL:

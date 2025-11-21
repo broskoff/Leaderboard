@@ -27,7 +27,6 @@ final class WorkoutsListViewController: UIViewController, IWorkoutsListView  {
     
     private func configWorkoutsCollectionView() {
         workoutsListView.workoutsCollectionView.dataSource = self
-//коллекция, если что-то произойдёт — тап по ячейке — зови МЕНЯ. «меня» = ViewController (self).
         workoutsListView.workoutsCollectionView.delegate = self
         workoutsListView.workoutsCollectionView.register(
             WorkoutsListCollectionViewCell.self,
@@ -49,13 +48,11 @@ final class WorkoutsListViewController: UIViewController, IWorkoutsListView  {
     }
     
     private func hideLoadingState() {
-            self.workoutsListView.activityIndicatorView.stopAnimating()
+        self.workoutsListView.activityIndicatorView.stopAnimating()
     }
 }
 
-//ViewController делегат коллекции, решает что делать если над коллекцией совершили действие
 extension WorkoutsListViewController: UICollectionViewDelegate {
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedWorkout = workouts[indexPath.row].id
         completionHandler?(selectedWorkout)
@@ -63,7 +60,6 @@ extension WorkoutsListViewController: UICollectionViewDelegate {
 }
 
 extension WorkoutsListViewController: UICollectionViewDataSource {
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return workouts.count
     }
@@ -78,12 +74,9 @@ extension WorkoutsListViewController: UICollectionViewDataSource {
         cell.setData(workout: workout.image, date: workout.date)
         return cell
     }
-    
 }
 
-
 extension WorkoutsListViewController: UICollectionViewDelegateFlowLayout {
-    
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {

@@ -8,7 +8,6 @@ protocol ILeaderboardDataManager {
 }
 
 final class LeaderboardDataManager: ILeaderboardDataManager {
-
     private var context: NSManagedObjectContext {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.persistentContainer.viewContext
@@ -19,15 +18,12 @@ final class LeaderboardDataManager: ILeaderboardDataManager {
         var predicates: [NSPredicate] = [NSPredicate(format: "workout.id == %d", workoutId)]
         
         predicates.append(NSPredicate(format: "gender == %@", gender))
-        
         request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
         
         switch typeResult {
         case TypeResult.count.rawValue:
-            // Сортируем только по количеству повторов (descending)
             request.sortDescriptors = [NSSortDescriptor(key: "resultCount", ascending: false)]
         case TypeResult.time.rawValue:
-            // Сортируем только по времени (ascending), меньшее время — лучше
             request.sortDescriptors = [NSSortDescriptor(key: "resultTime", ascending: true)]
         default:
             break
@@ -42,7 +38,6 @@ final class LeaderboardDataManager: ILeaderboardDataManager {
     }
     
     func addResult(name: String, result: Int, gender: String, workoutId: Int, typeResult: String) {
-        
         let new = UserResult(context: context)
         new.name = name
         new.gender = gender
@@ -82,6 +77,12 @@ final class LeaderboardDataManager: ILeaderboardDataManager {
     private func fetchWorkout(with id: Int) -> Workout? {
         let request: NSFetchRequest<Workout> = Workout.fetchRequest()
         request.predicate = NSPredicate(format: "id == %d", id)
-        return try? context.fetch(request).first
+        
+        do {
+            return try context.fetch(request).first
+        } catch {
+            print("Ошибка извлечения результата: \(error)")
+            return nil
+        }
     }
 }

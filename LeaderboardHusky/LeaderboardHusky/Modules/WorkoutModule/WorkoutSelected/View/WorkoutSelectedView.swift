@@ -2,7 +2,6 @@ import UIKit
 import SnapKit
 
 final class WorkoutSelectedView: UIView {
-    
     var workoutImageView = UIImageView()
     var workoutDescriptionTV = UITextView()
     var leaderboardButton = UIButton()
@@ -10,7 +9,6 @@ final class WorkoutSelectedView: UIView {
     
     private var scrollView = UIScrollView()
     private var stackView = UIStackView()
-        
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -24,7 +22,6 @@ final class WorkoutSelectedView: UIView {
 }
 
 private extension WorkoutSelectedView {
-    
     func configureUI() {
         backgroundColor = .white
         

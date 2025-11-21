@@ -13,7 +13,6 @@ final class LeaderboardPresenter: ILeaderboardPresenter {
     private var workoutTypeResult: String
     private var view: ILeaderboardView
     private var dataManager: ILeaderboardDataManager
-    
     private var currentGender = Gender.male.rawValue
     
     init(view: ILeaderboardView,
@@ -68,6 +67,12 @@ final class LeaderboardPresenter: ILeaderboardPresenter {
         loadAndShow()
     }
     
+    func deleteUserResult(object: UserResult) {
+        dataManager.deleteContext(object: object)
+        
+        loadAndShow()
+    }
+    
     private func loadAndShow() {
         let users = dataManager.fetchResults(for: workoutId,
                                              gender: currentGender,
@@ -79,11 +84,5 @@ final class LeaderboardPresenter: ILeaderboardPresenter {
             return
         }
         view.setLeaderboardData(users: users, workoutTypeResult: workoutTypeResult)
-    }
-    
-    func deleteUserResult(object: UserResult) {
-        dataManager.deleteContext(object: object)
-        
-        loadAndShow()
     }
 }

@@ -11,4 +11,3 @@ struct WorkoutsListModel: Decodable, IWorkoutsListModel {
     var date: String
     var image: String
 }
-

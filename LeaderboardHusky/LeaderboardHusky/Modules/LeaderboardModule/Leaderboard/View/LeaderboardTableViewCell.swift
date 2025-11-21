@@ -27,7 +27,6 @@ final class LeaderboardTableViewCell: UITableViewCell {
 }
 
 private extension LeaderboardTableViewCell {
-    
     func configureUI() {
         setupContainer()
         addSubviews()

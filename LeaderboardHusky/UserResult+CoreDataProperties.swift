@@ -1,14 +1,5 @@
-//
-//  UserResult+CoreDataProperties.swift
-//  LeaderboardHusky
-//
-//  Created by Tanya G. on 21.11.2025.
-//
-//
-
 import Foundation
 import CoreData
-
 
 extension UserResult {
 
@@ -21,7 +12,6 @@ extension UserResult {
     @NSManaged public var resultCount: Int16
     @NSManaged public var resultTime: Int32
     @NSManaged public var workout: Workout?
-
 }
 
 extension UserResult : Identifiable {

@@ -12,7 +12,7 @@ final class TrainingCoordinator: ICoordinator {
         showWorkoutsListViewController()
     }
     
-    func showWorkoutsListViewController() {
+    private func showWorkoutsListViewController() {
         let controller = ScreenFactory.createWorkoutsListScreen()
         controller.completionHandler = { [weak self] workoutId in
             self?.showWorkoutSelectedViewController(with: workoutId)
@@ -20,7 +20,7 @@ final class TrainingCoordinator: ICoordinator {
         navigationController.pushViewController(controller, animated: true)
     }
     
-    func showWorkoutSelectedViewController(with workoutId: Int) {
+    private func showWorkoutSelectedViewController(with workoutId: Int) {
         let controller = ScreenFactory.createWorkoutSelectedScreen(workoutId: workoutId)
         controller.completionHandler = { [weak self] (id, typeResult, date) in
             self?.showLeaderboardViewController(workout: (id, typeResult, date))
@@ -28,9 +28,8 @@ final class TrainingCoordinator: ICoordinator {
         navigationController.pushViewController(controller, animated: true)
     }
     
-    func showLeaderboardViewController(workout: (Int, String, String)) {
+    private func showLeaderboardViewController(workout: (Int, String, String)) {
         let controller = ScreenFactory.createLeaderboardScreen(workout: workout)
-        
         navigationController.pushViewController(controller, animated: true)
     }
 }

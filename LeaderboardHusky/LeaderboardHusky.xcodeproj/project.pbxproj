@@ -142,6 +142,15 @@
 			path = NetworkManager;
 			sourceTree = "<group>";
 		};
+		C7605EFD2ED0F118000C11F5 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C7605EE52ED0C575000C11F5 /* TextConstants.swift */,
+				C7605EE72ED0C751000C11F5 /* TextConstantsNetworkManager.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		C77C3D0E2EC76FB200ABCD93 = {
 			isa = PBXGroup;
 			children = (
@@ -165,6 +174,7 @@
 		C77C3DE92EC7763F00ABCD93 /* LeaderboardHusky */ = {
 			isa = PBXGroup;
 			children = (
+				C7605EFD2ED0F118000C11F5 /* Utils */,
 				C77C3DF22EC7764300ABCD93 /* App */,
 				C7AE19C32EC8517300D8C2D8 /* BaseProtocol */,
 				C7AE19BF2EC8511400D8C2D8 /* Coordinators */,
@@ -173,8 +183,6 @@
 				C77C3DE22EC7763F00ABCD93 /* Assets.xcassets */,
 				C77C3DE32EC7763F00ABCD93 /* Info.plist */,
 				C77C3DE52EC7763F00ABCD93 /* LaunchScreen.storyboard */,
-				C7605EE52ED0C575000C11F5 /* TextConstants.swift */,
-				C7605EE72ED0C751000C11F5 /* TextConstantsNetworkManager.swift */,
 				C77C3DE62EC7763F00ABCD93 /* LeaderboardHusky.xcdatamodeld */,
 			);
 			path = LeaderboardHusky;

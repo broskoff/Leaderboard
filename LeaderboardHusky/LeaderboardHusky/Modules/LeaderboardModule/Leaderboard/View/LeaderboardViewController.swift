@@ -8,17 +8,16 @@ protocol ILeaderboardView: AnyObject {
 }
 
 final class LeaderboardViewController: UIViewController {
-    
     var leaderboardPresenter: ILeaderboardPresenter?
-
+    
     private let leaderboardView = LeaderboardView()
     private var userResults: [UserResult] = []
     private var cellModels: [LeaderboardTableViewCellModel] = []
-
+    
     override func loadView() {
         view = leaderboardView
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         leaderboardPresenter?.getWorkoutDate()
@@ -27,15 +26,16 @@ final class LeaderboardViewController: UIViewController {
         setupActions()
         leaderboardPresenter?.getData()
     }
-
+    
     private func configLeaderboardTableView() {
-        leaderboardView.leaderboardTableView.register(LeaderboardTableViewCell.self, forCellReuseIdentifier: LeaderboardTableViewCell.id)
+        leaderboardView.leaderboardTableView.register(LeaderboardTableViewCell.self,
+                                                      forCellReuseIdentifier: LeaderboardTableViewCell.id)
         leaderboardView.leaderboardTableView.dataSource = self
         leaderboardView.leaderboardTableView.delegate = self
         leaderboardView.leaderboardTableView.rowHeight = 60
         leaderboardView.leaderboardTableView.tableFooterView = UIView()
     }
-
+    
     private func setupActions() {
         leaderboardView.leaderboardSegmentControl.addTarget(self,
                                                             action: #selector(segmentChanged(_:)),
@@ -45,11 +45,11 @@ final class LeaderboardViewController: UIViewController {
                                                   action: #selector(addResultTapped),
                                                   for: .touchUpInside)
     }
-
+    
     @objc private func segmentChanged(_ sender: UISegmentedControl) {
         leaderboardPresenter?.selectGender(index: sender.selectedSegmentIndex)
     }
-
+    
     @objc private func addResultTapped() {
         leaderboardPresenter?.getworkoutTypeResult()
     }
@@ -59,7 +59,7 @@ extension LeaderboardViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cellModels.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: LeaderboardTableViewCell.id,
                                                        for: indexPath) as? LeaderboardTableViewCell else { return UITableViewCell()}
@@ -70,7 +70,6 @@ extension LeaderboardViewController: UITableViewDataSource {
 }
 
 extension LeaderboardViewController: UITableViewDelegate {
-    
     func tableView(_ tableView: UITableView,
                    trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
@@ -88,7 +87,6 @@ extension LeaderboardViewController: UITableViewDelegate {
 }
 
 extension LeaderboardViewController: ILeaderboardView {
-    
     func setupLeaderboardTitle(workoutDate: String) {
         title = "\(Headlines.leaderboard.rawValue) \(workoutDate)"
     }
@@ -122,7 +120,7 @@ extension LeaderboardViewController: ILeaderboardView {
         self.cellModels = models
         leaderboardView.leaderboardTableView.reloadData()
     }
-
+    
     func showForEmptyLeaderboard(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: LeaderboardText.ok.rawValue, style: .default))
@@ -140,10 +138,10 @@ extension LeaderboardViewController: ILeaderboardView {
             switch workoutTypeResult {
             case TypeResult.count.rawValue:
                 tf.placeholder = LeaderboardAlertField.countRep.rawValue
-                    tf.keyboardType = .numberPad
+                tf.keyboardType = .numberPad
             case TypeResult.time.rawValue:
                 tf.placeholder = LeaderboardAlertField.time.rawValue
-                    tf.keyboardType = .numbersAndPunctuation
+                tf.keyboardType = .numbersAndPunctuation
             default:
                 break
             }
@@ -167,14 +165,14 @@ extension LeaderboardViewController: ILeaderboardView {
             name = alert.textFields?[0].text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "Неизвестный"
             
             let resultText = alert.textFields?[1].text ?? "0"
-                switch workoutTypeResult {
-                case TypeResult.count.rawValue:
-                    resultValue = Int(resultText) ?? 0
-                case TypeResult.time.rawValue:
-                    resultValue = convertStringToSeconds(time: resultText) //сделать проверку, результат запихнуть в презентер, пусть он конвертить время
-                default:
-                    break
-                }
+            switch workoutTypeResult {
+            case TypeResult.count.rawValue:
+                resultValue = Int(resultText) ?? 0
+            case TypeResult.time.rawValue:
+                resultValue = convertStringToSeconds(time: resultText) //сделать проверку, результат запихнуть в презентер, пусть он конвертить время
+            default:
+                break
+            }
             
             switch genderSegment.selectedSegmentIndex {
             case 0:
@@ -190,7 +188,7 @@ extension LeaderboardViewController: ILeaderboardView {
         present(alert, animated: true)
     }
     
-    func convertStringToSeconds(time: String) -> Int {
+    private func convertStringToSeconds(time: String) -> Int {
         let components = time.split(separator: ":")
         
         guard components.count == 2 else { return 0 }
@@ -200,4 +198,3 @@ extension LeaderboardViewController: ILeaderboardView {
         return totalScore
     }
 }
-
