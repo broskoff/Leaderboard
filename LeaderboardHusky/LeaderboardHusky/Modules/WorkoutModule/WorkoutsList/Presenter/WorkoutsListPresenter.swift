@@ -13,6 +13,7 @@ class WorkoutsListPresenter: IWorkoutsListPresenter {
     }
     
     func getData() {
+        view.setLoadingState()
         networkManager.getWorkouts { [weak self] result in
             
             guard let self = self else { return }
@@ -36,6 +37,5 @@ class WorkoutsListPresenter: IWorkoutsListPresenter {
                 }
             }
         }
-//        view.setLoadingState()
     }
 }

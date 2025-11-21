@@ -2,6 +2,7 @@ import UIKit
 
 protocol IWorkoutSelectedView: AnyObject {
     func setDataForImageAndDescription(workouts: [IWorkoutSelectedModel], id selectedWorkout: Int)
+    func setLoadingState()
 }
 
 final class WorkoutSelectedViewController: UIViewController, IWorkoutSelectedView  {
@@ -45,9 +46,19 @@ final class WorkoutSelectedViewController: UIViewController, IWorkoutSelectedVie
                 self.workoutSelectedView.workoutImageView.image = UIImage(data: imageData)
                 self.workoutSelectedView.workoutDescriptionTV.text = workout.description
                 self.title = "\(Headlines.workout.rawValue) \(workout.date)"
+                self.hideLoadingState()
             }
             self.selectedWorkout = workout
         }
+    }
+    
+    func setLoadingState() {
+        workoutSelectedView.activityIndicatorView.startAnimating()
+        workoutSelectedView.activityIndicatorView.isHidden = false
+    }
+    
+    private func hideLoadingState() {
+        workoutSelectedView.activityIndicatorView.stopAnimating()
     }
 }
 

@@ -2,6 +2,7 @@ import UIKit
 
 protocol IWorkoutsListView: AnyObject {
     func setDataInCell(_ data: [IWorkoutsListModel])
+    func setLoadingState()
 }
 
 final class WorkoutsListViewController: UIViewController, IWorkoutsListView  {
@@ -38,7 +39,17 @@ final class WorkoutsListViewController: UIViewController, IWorkoutsListView  {
         DispatchQueue.main.async {
             self.workouts = data
             self.workoutsListView.workoutsCollectionView.reloadData()
+            self.hideLoadingState()
         }
+    }
+    
+    func setLoadingState() {
+        workoutsListView.activityIndicatorView.startAnimating()
+        workoutsListView.activityIndicatorView.isHidden = false
+    }
+    
+    private func hideLoadingState() {
+            self.workoutsListView.activityIndicatorView.stopAnimating()
     }
 }
 
@@ -67,6 +78,7 @@ extension WorkoutsListViewController: UICollectionViewDataSource {
         cell.setData(workout: workout.image, date: workout.date)
         return cell
     }
+    
 }
 
 

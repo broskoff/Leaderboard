@@ -30,7 +30,6 @@ final class WorkoutsListCollectionViewCell: UICollectionViewCell {
         }
         workoutDataLabel.text = date
     }
-
     
     private func configCell() {
         setupElements()

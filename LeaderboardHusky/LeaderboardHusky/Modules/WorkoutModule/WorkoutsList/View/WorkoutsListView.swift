@@ -3,6 +3,13 @@ import SnapKit
 
 final class WorkoutsListView: UIView {
     
+    var activityIndicatorView: UIActivityIndicatorView = {
+        let activityIndicatorView = UIActivityIndicatorView()
+        activityIndicatorView.style = .large
+        activityIndicatorView.color = .systemBlue
+        return activityIndicatorView
+    }()
+    
     lazy var workoutsLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -41,6 +48,7 @@ private extension WorkoutsListView {
     
     func addSubviews() {
         addSubview(self.workoutsCollectionView)
+        addSubview(self.activityIndicatorView)
     }
     
     func addConstraints() {
@@ -48,6 +56,10 @@ private extension WorkoutsListView {
             $0.top.equalTo(safeAreaLayoutGuide)
             $0.leading.trailing.equalTo(safeAreaLayoutGuide)
             $0.bottom.equalTo(safeAreaLayoutGuide)
+        }
+        
+        activityIndicatorView.snp.makeConstraints {
+            $0.center.equalToSuperview()
         }
     }
 }

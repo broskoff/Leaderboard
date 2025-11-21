@@ -6,10 +6,11 @@ final class WorkoutSelectedView: UIView {
     var workoutImageView = UIImageView()
     var workoutDescriptionTV = UITextView()
     var leaderboardButton = UIButton()
+    var activityIndicatorView = UIActivityIndicatorView()
     
     private var scrollView = UIScrollView()
     private var stackView = UIStackView()
-//    private var activityIndicatorView = UIActivityIndicatorView()
+        
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -51,10 +52,14 @@ private extension WorkoutSelectedView {
         workoutDescriptionTV.textColor = .black
         workoutDescriptionTV.isEditable = false
         workoutDescriptionTV.isScrollEnabled = false
+        
+        activityIndicatorView.style = .large
+        activityIndicatorView.color = .systemBlue
     }
     
     func addSubviews() {
         addSubview(scrollView)
+        addSubview(activityIndicatorView)
         scrollView.addSubview(stackView)
         
         stackView.addArrangedSubview(workoutImageView)
@@ -74,6 +79,10 @@ private extension WorkoutSelectedView {
         
         workoutImageView.snp.makeConstraints {
             $0.height.equalTo(550)
+        }
+        
+        activityIndicatorView.snp.makeConstraints {
+            $0.center.equalToSuperview()
         }
     }
 }

@@ -15,8 +15,9 @@ final class WorkoutSelectedPresenter: IWorkoutPresenter {
     }
     
     func getData() {
+        view.setLoadingState()
+        
         networkManager.getWorkoutSelected(id: selectedWorkoutID) { [weak self] result in
-            
             guard let self = self else { return }
             
             switch result {
