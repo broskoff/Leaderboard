@@ -8,7 +8,7 @@ protocol IWorkoutsListModel {
     static func create() -> [WorkoutsListModel]
 }
 
-struct WorkoutsListModel: IWorkoutsListModel {
+struct WorkoutsListModel: Decodable, IWorkoutsListModel {
     var id: Int
     var date: String
     var image: String

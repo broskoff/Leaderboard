@@ -33,7 +33,7 @@ final class LeaderboardPresenter: ILeaderboardPresenter {
     }
     
     func getWorkoutDate() {
-        view.setupLeaderboardTitle(workoutData: workoutDate)
+        view.setupLeaderboardTitle(workoutDate: workoutDate)
     }
     
     func getData() {
@@ -73,7 +73,8 @@ final class LeaderboardPresenter: ILeaderboardPresenter {
                                              gender: currentGender,
                                              typeResult: workoutTypeResult)
         if users.isEmpty {
-            view.showForEmptyLeaderboard(title: "Лидерборд пуст", message: "Пока нет результатов — добавь первый!")
+            view.showForEmptyLeaderboard(title: "Лидерборд пуст",
+                                         message: "Пока нет результатов — добавь первый!")
             view.setLeaderboardData(users: [], workoutTypeResult: workoutTypeResult)
             return
         }

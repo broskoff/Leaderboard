@@ -1,7 +1,7 @@
 import UIKit
 
 protocol ILeaderboardView: AnyObject {
-    func setupLeaderboardTitle(workoutData: String)
+    func setupLeaderboardTitle(workoutDate: String)
     func setLeaderboardData(users: [UserResult], workoutTypeResult: TypeResult)
     func showForEmptyLeaderboard(title: String, message: String)
     func createAlertAddResult(workoutTypeResult: TypeResult)
@@ -89,8 +89,8 @@ extension LeaderboardViewController: UITableViewDelegate {
 
 extension LeaderboardViewController: ILeaderboardView {
     
-    func setupLeaderboardTitle(workoutData: String) {
-        title = "\(nameLeaderboard) \(workoutData)"
+    func setupLeaderboardTitle(workoutDate: String) {
+        title = "\(nameLeaderboard) \(workoutDate)"
     }
     
     func setLeaderboardData(users: [UserResult], workoutTypeResult: TypeResult) {
@@ -102,7 +102,7 @@ extension LeaderboardViewController: ILeaderboardView {
             let name = user.name ?? "Неизвестный"
             
             var resultText = ""
-            switch workoutTypeResult {
+            switch workoutTypeResult { //обратный конвертер времени утащить в презентер
             case .resultCount:
                 resultText = "\(user.resultCount)"
             case .resultTime:
@@ -168,7 +168,7 @@ extension LeaderboardViewController: ILeaderboardView {
                 case .resultCount:
                     resultValue = Int(resultText) ?? 0
                 case .resultTime:
-                    resultValue = convertStringToSeconds(time: resultText)
+                    resultValue = convertStringToSeconds(time: resultText) //сделать проверку, результат запихнуть в презентер, пусть он конвертить время
                 }
             
             switch genderSegment.selectedSegmentIndex {
