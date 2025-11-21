@@ -11,14 +11,14 @@ protocol ILeaderboardPresenter {
 final class LeaderboardPresenter: ILeaderboardPresenter {
     private let workoutId: Int
     private let workoutDate: String
-    private var workoutTypeResult: TypeResult
+    private var workoutTypeResult: String
     private var view: ILeaderboardView
     private var dataManager: ILeaderboardDataManager
     
     private var currentGender = "male"
     
     init(view: ILeaderboardView,
-         selectedWorkout: (id: Int, typeResult: TypeResult, date: String),
+         selectedWorkout: (id: Int, typeResult: String, date: String),
          dataManager: ILeaderboardDataManager) {
         
         self.view = view
@@ -52,18 +52,20 @@ final class LeaderboardPresenter: ILeaderboardPresenter {
     
     func addResult(name: String, result: Int, gender: String) {
         switch workoutTypeResult {
-        case .resultCount:
+        case "0":
             dataManager.addResult(name: name,
                                   result: result,
                                   gender: gender,
                                   workoutId: workoutId,
-                                  typeResult: workoutTypeResult.rawValue)
-        case .resultTime:
+                                  typeResult: "0")
+        case "1":
             dataManager.addResult(name: name,
                                   result: result,
                                   gender: gender,
                                   workoutId: workoutId,
-                                  typeResult: workoutTypeResult.rawValue)
+                                  typeResult: "1")
+        default:
+            break
         }
         loadAndShow()
     }

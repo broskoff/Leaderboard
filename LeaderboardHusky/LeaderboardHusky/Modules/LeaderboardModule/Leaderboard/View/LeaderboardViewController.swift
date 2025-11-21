@@ -2,9 +2,9 @@ import UIKit
 
 protocol ILeaderboardView: AnyObject {
     func setupLeaderboardTitle(workoutDate: String)
-    func setLeaderboardData(users: [UserResult], workoutTypeResult: TypeResult)
+    func setLeaderboardData(users: [UserResult], workoutTypeResult: String)
     func showForEmptyLeaderboard(title: String, message: String)
-    func createAlertAddResult(workoutTypeResult: TypeResult)
+    func createAlertAddResult(workoutTypeResult: String)
 }
 
 final class LeaderboardViewController: UIViewController {
@@ -93,7 +93,7 @@ extension LeaderboardViewController: ILeaderboardView {
         title = "\(nameLeaderboard) \(workoutDate)"
     }
     
-    func setLeaderboardData(users: [UserResult], workoutTypeResult: TypeResult) {
+    func setLeaderboardData(users: [UserResult], workoutTypeResult: String) {
         userResults = users
         // Преобразование UserResult в модел для отображения
         var models: [LeaderboardTableViewCellModel] = []
@@ -103,9 +103,9 @@ extension LeaderboardViewController: ILeaderboardView {
             
             var resultText = ""
             switch workoutTypeResult { //обратный конвертер времени утащить в презентер
-            case .resultCount:
+            case "0":
                 resultText = "\(user.resultCount)"
-            case .resultTime:
+            case "1":
                 let totalSeconds = user.resultTime
                 let minutes = totalSeconds / 60
                 let seconds = totalSeconds % 60
@@ -114,6 +114,8 @@ extension LeaderboardViewController: ILeaderboardView {
                 } else {
                     resultText = "\(minutes):\(seconds)"
                 }
+            default:
+                break
             }
             
             models.append(LeaderboardTableViewCellModel(rank: rank, name: name, resultText: resultText))
@@ -128,7 +130,7 @@ extension LeaderboardViewController: ILeaderboardView {
         present(alert, animated: true)
     }
     
-    func createAlertAddResult(workoutTypeResult: TypeResult) {
+    func createAlertAddResult(workoutTypeResult: String) {
         var name = ""
         var resultValue = 0
         var gender = ""
@@ -137,13 +139,15 @@ extension LeaderboardViewController: ILeaderboardView {
         alert.addTextField { $0.placeholder = "Имя" }
         alert.addTextField { tf in
             switch workoutTypeResult {
-                case .resultCount:
+                case "0":
                     tf.placeholder = "Количество повторов"
                     tf.keyboardType = .numberPad
-                case .resultTime:
+                case "1":
                     tf.placeholder = "Время __:__"
                     tf.keyboardType = .numbersAndPunctuation
-                }
+            default:
+                break
+            }
         }
         
         let genderSegment = UISegmentedControl(items: ["Парень", "Девушка"])
@@ -165,10 +169,12 @@ extension LeaderboardViewController: ILeaderboardView {
             
             let resultText = alert.textFields?[1].text ?? "0"
                 switch workoutTypeResult {
-                case .resultCount:
+                case "0":
                     resultValue = Int(resultText) ?? 0
-                case .resultTime:
+                case "1":
                     resultValue = convertStringToSeconds(time: resultText) //сделать проверку, результат запихнуть в презентер, пусть он конвертить время
+                default:
+                    break
                 }
             
             switch genderSegment.selectedSegmentIndex {

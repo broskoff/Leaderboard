@@ -5,10 +5,10 @@ final class WorkoutSelectedView: UIView {
     
     var workoutImageView = UIImageView()
     var workoutDescriptionTV = UITextView()
-    var leaderboardButton: UIButton!
+    var leaderboardButton = UIButton()
     
-    private var scrollView: UIScrollView!
-    private var stackView: UIStackView!
+    private var scrollView = UIScrollView()
+    private var stackView = UIStackView()
 //    private var activityIndicatorView = UIActivityIndicatorView()
     
     override init(frame: CGRect) {
@@ -33,9 +33,6 @@ private extension WorkoutSelectedView {
     }
     
     func setupElements() {
-        scrollView = UIScrollView()
-        
-        stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 16
         

@@ -29,7 +29,7 @@ final class TrainingCoordinator: ICoordinator {
         navigationController.pushViewController(controller, animated: true)
     }
     
-    func showLeaderboardViewController(workout: (Int, TypeResult, String)) {
+    func showLeaderboardViewController(workout: (Int, String, String)) {
         let controller = ScreenFactory.createLeaderboardScreen(workout: workout)
         
         navigationController.pushViewController(controller, animated: true)

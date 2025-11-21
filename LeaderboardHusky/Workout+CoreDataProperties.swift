@@ -1,3 +1,11 @@
+//
+//  Workout+CoreDataProperties.swift
+//  LeaderboardHusky
+//
+//  Created by Tanya G. on 21.11.2025.
+//
+//
+
 import Foundation
 import CoreData
 

@@ -9,7 +9,7 @@ final class WorkoutsListViewController: UIViewController, IWorkoutsListView, IFl
     var workoutsListPresenter: IWorkoutsListPresenter!
     
     private let workoutsListView = WorkoutsListView()
-    private var workouts: [IWorkoutsListModel]!
+    private var workouts: [IWorkoutsListModel] = []
     
     override func loadView() {
         view = workoutsListView
@@ -35,8 +35,10 @@ final class WorkoutsListViewController: UIViewController, IWorkoutsListView, IFl
     }
     
     func setDataInCell(_ data: [IWorkoutsListModel]) {
-        workouts = data
-        workoutsListView.workoutsCollectionView.reloadData()
+        DispatchQueue.main.async {
+            self.workouts = data
+            self.workoutsListView.workoutsCollectionView.reloadData()
+        }
     }
 }
 

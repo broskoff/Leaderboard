@@ -2,7 +2,7 @@ import UIKit
 import CoreData
 
 protocol ILeaderboardDataManager {
-    func fetchResults(for workoutId: Int, gender: String, typeResult: TypeResult) -> [UserResult]
+    func fetchResults(for workoutId: Int, gender: String, typeResult: String) -> [UserResult]
     func addResult(name: String, result: Int, gender: String, workoutId: Int, typeResult: String)
     func deleteContext(object: UserResult)
 }
@@ -14,7 +14,7 @@ final class LeaderboardDataManager: ILeaderboardDataManager {
         return appDelegate.persistentContainer.viewContext
     }
     
-    func fetchResults(for workoutId: Int, gender: String, typeResult: TypeResult) -> [UserResult] {
+    func fetchResults(for workoutId: Int, gender: String, typeResult: String) -> [UserResult] {
         let request: NSFetchRequest<UserResult> = UserResult.fetchRequest()
         var predicates: [NSPredicate] = [NSPredicate(format: "workout.id == %d", workoutId)]
         
@@ -23,12 +23,14 @@ final class LeaderboardDataManager: ILeaderboardDataManager {
         request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
  
             switch typeResult {
-            case .resultCount:
+            case "0":
                 // Сортируем только по количеству повторов (descending)
                 request.sortDescriptors = [NSSortDescriptor(key: "resultCount", ascending: false)]
-            case .resultTime:
+            case "1":
                 // Сортируем только по времени (ascending), меньшее время — лучше
                 request.sortDescriptors = [NSSortDescriptor(key: "resultTime", ascending: true)]
+            default:
+                break
             }
             
             do {

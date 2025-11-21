@@ -19,14 +19,20 @@ final class WorkoutsListCollectionViewCell: UICollectionViewCell {
     }
     
     func setData(workout: String, date: String) {
-        workoutImage.image = UIImage(named: workout)
+        let imageURL = URL(string: workout)
+        
+        let queue = DispatchQueue.global(qos: .utility)
+        queue.async {
+            guard let url = imageURL, let imageData = try? Data(contentsOf: url) else { return }
+            DispatchQueue.main.async {
+                self.workoutImage.image = UIImage(data: imageData)
+            }
+        }
         workoutDataLabel.text = date
     }
 
     
     private func configCell() {
-//        backgroundColor = .purple
-        
         setupElements()
         addSubviews()
         addConstraint()
