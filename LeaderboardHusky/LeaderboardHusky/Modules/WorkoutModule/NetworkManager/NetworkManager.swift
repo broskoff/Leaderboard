@@ -18,7 +18,7 @@ enum ServiceError: Error {
 
 final class NetworkManager: INetworkManagerWorkoutsList, INetworkManagerWorkoutSelected {
     
-    private let networkServiceBaseURL = "https://69154abb84e8bd126af965b5.mockapi.io/api/v1/workouts"
+    private let networkServiceBaseURL = URLText.baseURL.rawValue
     
     func getWorkouts(completion: @escaping (Result<[IWorkoutsListModel], ServiceError>) -> Void) {
         
@@ -41,7 +41,7 @@ final class NetworkManager: INetworkManagerWorkoutsList, INetworkManagerWorkoutS
                 case 200..<300:
                     print("Успех")
                 default:
-                    print("Ошибка сервера")
+                    print("Ошибка")
                     completion(.failure(.badStatusCode(status)))
                 }
             }
@@ -58,13 +58,12 @@ final class NetworkManager: INetworkManagerWorkoutsList, INetworkManagerWorkoutS
                 completion(.failure(.parsingError(error)))
             }
         }
-        
         task.resume()
     }
     
     func getWorkoutSelected(id: Int,
                             completion: @escaping (Result<[IWorkoutSelectedModel], ServiceError>) -> Void) {
-        guard let url = URL(string: "\(networkServiceBaseURL)?id=\(id)") else {
+        guard let url = URL(string: "\(URLText.baseURLForWorkout.rawValue)\(id)") else {
             completion(.failure(.invalidURL))
             return
         }
@@ -83,7 +82,7 @@ final class NetworkManager: INetworkManagerWorkoutsList, INetworkManagerWorkoutS
                 case 200..<300:
                     print("Успех")
                 default:
-                    print("Ошибка сервера")
+                    print("Ошибка badStatusCode")
                     completion(.failure(.badStatusCode(status)))
                 }
             }

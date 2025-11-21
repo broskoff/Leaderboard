@@ -2,14 +2,14 @@ import UIKit
 import SnapKit
 
 final class LeaderboardView: UIView {
-    let nameItemBoys = "Парни"
-    let nameItemGirls = "Девушки"
     let leaderboardTableView = UITableView()
     var addResultButton = UIButton(type: .system)
     
-    lazy var leaderboardSegmentControl = UISegmentedControl(items: [nameItemBoys, nameItemGirls])
-    
-    
+    lazy var leaderboardSegmentControl = UISegmentedControl(items: [
+        LeaderboardSegmentControlText.boys.rawValue,
+        LeaderboardSegmentControlText.girls.rawValue
+    ])
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         

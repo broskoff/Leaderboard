@@ -4,9 +4,9 @@ protocol IWorkoutsListView: AnyObject {
     func setDataInCell(_ data: [IWorkoutsListModel])
 }
 
-final class WorkoutsListViewController: UIViewController, IWorkoutsListView, IFlowController  {
+final class WorkoutsListViewController: UIViewController, IWorkoutsListView  {
     var completionHandler: ((Int) -> ())?
-    var workoutsListPresenter: IWorkoutsListPresenter!
+    var workoutsListPresenter: IWorkoutsListPresenter?
     
     private let workoutsListView = WorkoutsListView()
     private var workouts: [IWorkoutsListModel] = []
@@ -18,10 +18,10 @@ final class WorkoutsListViewController: UIViewController, IWorkoutsListView, IFl
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Тренировки дня"
+        title = Headlines.workouts.rawValue
         
         configWorkoutsCollectionView()
-        workoutsListPresenter.getData()
+        workoutsListPresenter?.getData()
     }
     
     private func configWorkoutsCollectionView() {

@@ -13,7 +13,6 @@ final class TrainingCoordinator: ICoordinator {
     }
     
     func showWorkoutsListViewController() {
-        //возможно вместо фабрикиЭкранов будет фабрикаБилдеров которая будет собирать МВП-экран
         let controller = ScreenFactory.createWorkoutsListScreen()
         controller.completionHandler = { [weak self] workoutId in
             self?.showWorkoutSelectedViewController(with: workoutId)

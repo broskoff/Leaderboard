@@ -7,11 +7,10 @@ protocol IWorkoutSelectedView: AnyObject {
 final class WorkoutSelectedViewController: UIViewController, IWorkoutSelectedView  {
     var completionHandler: ((Int, String, String) -> ())?
     
-    var workoutSelectedPresenter: IWorkoutPresenter!
+    var workoutSelectedPresenter: IWorkoutPresenter?
     
     private let workoutSelectedView = WorkoutSelectedView()
-    //    private var workouts: [IWorkoutSelectedModel]!
-    private var selectedWorkout: IWorkoutSelectedModel!
+    private var selectedWorkout: IWorkoutSelectedModel?
     
     override func loadView() {
         super.loadView()
@@ -22,7 +21,7 @@ final class WorkoutSelectedViewController: UIViewController, IWorkoutSelectedVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        workoutSelectedPresenter.getData()
+        workoutSelectedPresenter?.getData()
         
         workoutSelectedView.leaderboardButton.addTarget(self,
                                                         action: #selector(buttonTapped),
@@ -30,6 +29,7 @@ final class WorkoutSelectedViewController: UIViewController, IWorkoutSelectedVie
     }
     
     @objc func buttonTapped() {
+        guard let selectedWorkout = selectedWorkout else { return }
         completionHandler?(selectedWorkout.id, selectedWorkout.typeResult, selectedWorkout.date)
     }
     
@@ -44,7 +44,7 @@ final class WorkoutSelectedViewController: UIViewController, IWorkoutSelectedVie
             DispatchQueue.main.async {
                 self.workoutSelectedView.workoutImageView.image = UIImage(data: imageData)
                 self.workoutSelectedView.workoutDescriptionTV.text = workout.description
-                self.title = "Тренировка \(workout.date)"
+                self.title = "\(Headlines.workout.rawValue) \(workout.date)"
             }
             self.selectedWorkout = workout
         }

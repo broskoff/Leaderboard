@@ -17,6 +17,8 @@
 		C71769482EC9AA02003BCC98 /* WorkoutsListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71769472EC9AA02003BCC98 /* WorkoutsListPresenter.swift */; };
 		C7186D652ECCCDE6008CFE32 /* LeaderboardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7186D642ECCCDE6008CFE32 /* LeaderboardPresenter.swift */; };
 		C74296A32ED016FD00513244 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74296A22ED016FD00513244 /* NetworkManager.swift */; };
+		C7605EE62ED0C575000C11F5 /* TextConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7605EE52ED0C575000C11F5 /* TextConstants.swift */; };
+		C7605EE82ED0C751000C11F5 /* TextConstantsNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7605EE72ED0C751000C11F5 /* TextConstantsNetworkManager.swift */; };
 		C77C3DEB2EC7763F00ABCD93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C77C3DE22EC7763F00ABCD93 /* Assets.xcassets */; };
 		C77C3DED2EC7763F00ABCD93 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C77C3DE52EC7763F00ABCD93 /* LaunchScreen.storyboard */; };
 		C77C3DEE2EC7763F00ABCD93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77C3DE12EC7763F00ABCD93 /* AppDelegate.swift */; };
@@ -25,7 +27,6 @@
 		C77C3DF12EC7763F00ABCD93 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77C3DE82EC7763F00ABCD93 /* SceneDelegate.swift */; };
 		C7AE19C12EC8512B00D8C2D8 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AE19C02EC8512B00D8C2D8 /* AppCoordinator.swift */; };
 		C7AE19C62EC8519800D8C2D8 /* ICoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AE19C42EC8519800D8C2D8 /* ICoordinator.swift */; };
-		C7AE19C72EC8519800D8C2D8 /* IFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AE19C52EC8519800D8C2D8 /* IFlowController.swift */; };
 		C7AE19C92EC8542E00D8C2D8 /* TrainingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AE19C82EC8542E00D8C2D8 /* TrainingCoordinator.swift */; };
 		C7AE19CD2EC859F900D8C2D8 /* CoordinatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AE19CC2EC859F900D8C2D8 /* CoordinatorFactory.swift */; };
 		C7AE19D22EC8802D00D8C2D8 /* ScreenFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AE19D12EC8802D00D8C2D8 /* ScreenFactory.swift */; };
@@ -34,7 +35,6 @@
 		C7AE19DC2EC8A77200D8C2D8 /* WorkoutsListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AE19DB2EC8A77200D8C2D8 /* WorkoutsListCollectionViewCell.swift */; };
 		C7C5AA862ECA1F870078F182 /* WorkoutSelectedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C5AA852ECA1F870078F182 /* WorkoutSelectedViewController.swift */; };
 		C7D1BAD72ECAB76800230CF2 /* WorkoutSelectedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D1BAD62ECAB76800230CF2 /* WorkoutSelectedView.swift */; };
-		C7D1BAD92ECAC83C00230CF2 /* Plug.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D1BAD82ECAC83C00230CF2 /* Plug.swift */; };
 		C7D1BADB2ECAD89A00230CF2 /* WorkoutSelectedPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D1BADA2ECAD89A00230CF2 /* WorkoutSelectedPresenter.swift */; };
 		C7D1BAE12ECC2EE300230CF2 /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D1BAE02ECC2EE300230CF2 /* LeaderboardView.swift */; };
 		C7D1BAE32ECC2EF700230CF2 /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D1BAE22ECC2EF700230CF2 /* LeaderboardViewController.swift */; };
@@ -53,6 +53,8 @@
 		C71769472EC9AA02003BCC98 /* WorkoutsListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsListPresenter.swift; sourceTree = "<group>"; };
 		C7186D642ECCCDE6008CFE32 /* LeaderboardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardPresenter.swift; sourceTree = "<group>"; };
 		C74296A22ED016FD00513244 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		C7605EE52ED0C575000C11F5 /* TextConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextConstants.swift; sourceTree = "<group>"; };
+		C7605EE72ED0C751000C11F5 /* TextConstantsNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextConstantsNetworkManager.swift; sourceTree = "<group>"; };
 		C77C3D172EC76FB200ABCD93 /* LeaderboardHusky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LeaderboardHusky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C77C3DE12EC7763F00ABCD93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C77C3DE22EC7763F00ABCD93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -63,7 +65,6 @@
 		C77C3DEA2EC7763F00ABCD93 /* LeaderboardHusky.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LeaderboardHusky.xcdatamodel; sourceTree = "<group>"; };
 		C7AE19C02EC8512B00D8C2D8 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		C7AE19C42EC8519800D8C2D8 /* ICoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICoordinator.swift; sourceTree = "<group>"; };
-		C7AE19C52EC8519800D8C2D8 /* IFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IFlowController.swift; sourceTree = "<group>"; };
 		C7AE19C82EC8542E00D8C2D8 /* TrainingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingCoordinator.swift; sourceTree = "<group>"; };
 		C7AE19CC2EC859F900D8C2D8 /* CoordinatorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorFactory.swift; sourceTree = "<group>"; };
 		C7AE19D12EC8802D00D8C2D8 /* ScreenFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenFactory.swift; sourceTree = "<group>"; };
@@ -71,7 +72,6 @@
 		C7AE19DB2EC8A77200D8C2D8 /* WorkoutsListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsListCollectionViewCell.swift; sourceTree = "<group>"; };
 		C7C5AA852ECA1F870078F182 /* WorkoutSelectedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSelectedViewController.swift; sourceTree = "<group>"; };
 		C7D1BAD62ECAB76800230CF2 /* WorkoutSelectedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSelectedView.swift; sourceTree = "<group>"; };
-		C7D1BAD82ECAC83C00230CF2 /* Plug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plug.swift; sourceTree = "<group>"; };
 		C7D1BADA2ECAD89A00230CF2 /* WorkoutSelectedPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSelectedPresenter.swift; sourceTree = "<group>"; };
 		C7D1BAE02ECC2EE300230CF2 /* LeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
 		C7D1BAE22ECC2EF700230CF2 /* LeaderboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
@@ -173,8 +173,9 @@
 				C77C3DE22EC7763F00ABCD93 /* Assets.xcassets */,
 				C77C3DE32EC7763F00ABCD93 /* Info.plist */,
 				C77C3DE52EC7763F00ABCD93 /* LaunchScreen.storyboard */,
+				C7605EE52ED0C575000C11F5 /* TextConstants.swift */,
+				C7605EE72ED0C751000C11F5 /* TextConstantsNetworkManager.swift */,
 				C77C3DE62EC7763F00ABCD93 /* LeaderboardHusky.xcdatamodeld */,
-				C7D1BAD82ECAC83C00230CF2 /* Plug.swift */,
 			);
 			path = LeaderboardHusky;
 			sourceTree = "<group>";
@@ -210,7 +211,6 @@
 			isa = PBXGroup;
 			children = (
 				C7AE19C42EC8519800D8C2D8 /* ICoordinator.swift */,
-				C7AE19C52EC8519800D8C2D8 /* IFlowController.swift */,
 			);
 			path = BaseProtocol;
 			sourceTree = "<group>";
@@ -398,24 +398,24 @@
 				C713F5902ECDC48E0073886E /* Workout+CoreDataClass.swift in Sources */,
 				C713F5912ECDC48E0073886E /* Workout+CoreDataProperties.swift in Sources */,
 				C713F5D12ECE01860073886E /* LeaderboardDataManager.swift in Sources */,
-				C7D1BAD92ECAC83C00230CF2 /* Plug.swift in Sources */,
 				C7D1BAE32ECC2EF700230CF2 /* LeaderboardViewController.swift in Sources */,
 				C77C3DEE2EC7763F00ABCD93 /* AppDelegate.swift in Sources */,
 				C71769482EC9AA02003BCC98 /* WorkoutsListPresenter.swift in Sources */,
 				C7D1BAD72ECAB76800230CF2 /* WorkoutSelectedView.swift in Sources */,
 				C7D1BAE72ECC400400230CF2 /* LeaderboardTableViewCell.swift in Sources */,
 				C74296A32ED016FD00513244 /* NetworkManager.swift in Sources */,
+				C7605EE62ED0C575000C11F5 /* TextConstants.swift in Sources */,
 				C77C3DEF2EC7763F00ABCD93 /* LeaderboardHusky.xcdatamodeld in Sources */,
 				C7AE19C12EC8512B00D8C2D8 /* AppCoordinator.swift in Sources */,
 				C71769462EC991B9003BCC98 /* WorkoutsListModel.swift in Sources */,
 				C7AE19C62EC8519800D8C2D8 /* ICoordinator.swift in Sources */,
 				C7C5AA862ECA1F870078F182 /* WorkoutSelectedViewController.swift in Sources */,
 				C7D1BADB2ECAD89A00230CF2 /* WorkoutSelectedPresenter.swift in Sources */,
+				C7605EE82ED0C751000C11F5 /* TextConstantsNetworkManager.swift in Sources */,
 				C713F5942ECDE6AA0073886E /* WorkoutSelectedModel.swift in Sources */,
 				C7AE19DC2EC8A77200D8C2D8 /* WorkoutsListCollectionViewCell.swift in Sources */,
 				C7AE19D22EC8802D00D8C2D8 /* ScreenFactory.swift in Sources */,
 				C7186D652ECCCDE6008CFE32 /* LeaderboardPresenter.swift in Sources */,
-				C7AE19C72EC8519800D8C2D8 /* IFlowController.swift in Sources */,
 				C7AE19C92EC8542E00D8C2D8 /* TrainingCoordinator.swift in Sources */,
 				C7D1BAE92ECC648500230CF2 /* LeaderboardTableViewCellModel.swift in Sources */,
 				C7D1BAE12ECC2EE300230CF2 /* LeaderboardView.swift in Sources */,

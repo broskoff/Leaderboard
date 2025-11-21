@@ -24,13 +24,13 @@ class WorkoutsListPresenter: IWorkoutsListPresenter {
             case .failure(let error):
                 switch error {
                 case .invalidURL:
-                    print("Invalid URL")
+                    print("Неверный URL")
                 case .noData:
-                    print("No data")
+                    print("Нет данных")
                 case .networkError(let error):
-                    print("Network error: \(error.localizedDescription)")
+                    print("Ошибка сети: \(error.localizedDescription)")
                 case .parsingError(let error):
-                    print("Parsing error: \(error)")
+                    print("Ошибка парсинга: \(error)")
                 case .badStatusCode(let status):
                     print("Ошибка, статус код: \(status)")
                 }

@@ -7,7 +7,6 @@ protocol ILeaderboardPresenter {
     func deleteUserResult(object: UserResult)
 }
 
-
 final class LeaderboardPresenter: ILeaderboardPresenter {
     private let workoutId: Int
     private let workoutDate: String
@@ -15,7 +14,7 @@ final class LeaderboardPresenter: ILeaderboardPresenter {
     private var view: ILeaderboardView
     private var dataManager: ILeaderboardDataManager
     
-    private var currentGender = "male"
+    private var currentGender = Gender.male.rawValue
     
     init(view: ILeaderboardView,
          selectedWorkout: (id: Int, typeResult: String, date: String),
@@ -40,32 +39,31 @@ final class LeaderboardPresenter: ILeaderboardPresenter {
         loadAndShow()
     }
     
-    func selectGender(index: Int) { 
+    func selectGender(index: Int) {
         if index == 0 {
-                currentGender = "male"
-            } else {
-                currentGender = "female"
-            }
+            currentGender = Gender.male.rawValue
+        } else {
+            currentGender = Gender.female.rawValue
+        }
         
         loadAndShow()
     }
     
     func addResult(name: String, result: Int, gender: String) {
         switch workoutTypeResult {
-        case "0":
+        case TypeResult.count.rawValue:
             dataManager.addResult(name: name,
                                   result: result,
                                   gender: gender,
                                   workoutId: workoutId,
-                                  typeResult: "0")
-        case "1":
+                                  typeResult: TypeResult.count.rawValue)
+        case TypeResult.time.rawValue:
             dataManager.addResult(name: name,
                                   result: result,
                                   gender: gender,
                                   workoutId: workoutId,
-                                  typeResult: "1")
-        default:
-            break
+                                  typeResult: TypeResult.time.rawValue)
+        default: break
         }
         loadAndShow()
     }
@@ -75,8 +73,8 @@ final class LeaderboardPresenter: ILeaderboardPresenter {
                                              gender: currentGender,
                                              typeResult: workoutTypeResult)
         if users.isEmpty {
-            view.showForEmptyLeaderboard(title: "Лидерборд пуст",
-                                         message: "Пока нет результатов — добавь первый!")
+            view.showForEmptyLeaderboard(title: LeaderboardPresenterTextMessage.noResults.rawValue,
+                                         message: LeaderboardPresenterTextMessage.beFirst.rawValue)
             view.setLeaderboardData(users: [], workoutTypeResult: workoutTypeResult)
             return
         }

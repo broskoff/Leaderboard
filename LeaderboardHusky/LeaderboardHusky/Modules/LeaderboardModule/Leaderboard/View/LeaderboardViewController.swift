@@ -9,9 +9,8 @@ protocol ILeaderboardView: AnyObject {
 
 final class LeaderboardViewController: UIViewController {
     
-    var leaderboardPresenter: ILeaderboardPresenter!
+    var leaderboardPresenter: ILeaderboardPresenter?
 
-    private let nameLeaderboard = "Лидерборд"
     private let leaderboardView = LeaderboardView()
     private var userResults: [UserResult] = []
     private var cellModels: [LeaderboardTableViewCellModel] = []
@@ -22,11 +21,11 @@ final class LeaderboardViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        leaderboardPresenter.getWorkoutDate()
+        leaderboardPresenter?.getWorkoutDate()
         
         configLeaderboardTableView()
         setupActions()
-        leaderboardPresenter.getData()
+        leaderboardPresenter?.getData()
     }
 
     private func configLeaderboardTableView() {
@@ -48,11 +47,11 @@ final class LeaderboardViewController: UIViewController {
     }
 
     @objc private func segmentChanged(_ sender: UISegmentedControl) {
-        leaderboardPresenter.selectGender(index: sender.selectedSegmentIndex)
+        leaderboardPresenter?.selectGender(index: sender.selectedSegmentIndex)
     }
 
     @objc private func addResultTapped() {
-        leaderboardPresenter.getworkoutTypeResult()
+        leaderboardPresenter?.getworkoutTypeResult()
     }
 }
 
@@ -62,7 +61,8 @@ extension LeaderboardViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: LeaderboardTableViewCell.id, for: indexPath) as! LeaderboardTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: LeaderboardTableViewCell.id,
+                                                       for: indexPath) as? LeaderboardTableViewCell else { return UITableViewCell()}
         let model = cellModels[indexPath.row]
         cell.configure(with: model)
         return cell
@@ -75,11 +75,11 @@ extension LeaderboardViewController: UITableViewDelegate {
                    trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         let deleteAction = UIContextualAction(style: .destructive,
-                                              title: "Удалить") { [weak self] _, _, _ in
+                                              title: LeaderboardText.delete.rawValue) { [weak self] _, _, _ in
             guard let self = self else { return }
             
             let deleteResult = userResults[indexPath.row]
-            leaderboardPresenter.deleteUserResult(object: deleteResult)
+            leaderboardPresenter?.deleteUserResult(object: deleteResult)
         }
         
         let config = UISwipeActionsConfiguration(actions: [deleteAction])
@@ -90,22 +90,21 @@ extension LeaderboardViewController: UITableViewDelegate {
 extension LeaderboardViewController: ILeaderboardView {
     
     func setupLeaderboardTitle(workoutDate: String) {
-        title = "\(nameLeaderboard) \(workoutDate)"
+        title = "\(Headlines.leaderboard.rawValue) \(workoutDate)"
     }
     
     func setLeaderboardData(users: [UserResult], workoutTypeResult: String) {
         userResults = users
-        // Преобразование UserResult в модел для отображения
         var models: [LeaderboardTableViewCellModel] = []
         for (index, user) in users.enumerated() {
             let rank = index + 1
-            let name = user.name ?? "Неизвестный"
+            guard let name = user.name else { return }
             
             var resultText = ""
             switch workoutTypeResult { //обратный конвертер времени утащить в презентер
-            case "0":
+            case TypeResult.count.rawValue:
                 resultText = "\(user.resultCount)"
-            case "1":
+            case TypeResult.time.rawValue:
                 let totalSeconds = user.resultTime
                 let minutes = totalSeconds / 60
                 let seconds = totalSeconds % 60
@@ -126,7 +125,7 @@ extension LeaderboardViewController: ILeaderboardView {
 
     func showForEmptyLeaderboard(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ок", style: .default))
+        alert.addAction(UIAlertAction(title: LeaderboardText.ok.rawValue, style: .default))
         present(alert, animated: true)
     }
     
@@ -135,22 +134,22 @@ extension LeaderboardViewController: ILeaderboardView {
         var resultValue = 0
         var gender = ""
         
-        let alert = UIAlertController(title: "Добавить результат", message: "\n\n\n", preferredStyle: .alert)
-        alert.addTextField { $0.placeholder = "Имя" }
+        let alert = UIAlertController(title: LeaderboardText.addResult.rawValue, message: LeaderboardText.space.rawValue, preferredStyle: .alert)
+        alert.addTextField { $0.placeholder = LeaderboardAlertField.name.rawValue }
         alert.addTextField { tf in
             switch workoutTypeResult {
-                case "0":
-                    tf.placeholder = "Количество повторов"
+            case TypeResult.count.rawValue:
+                tf.placeholder = LeaderboardAlertField.countRep.rawValue
                     tf.keyboardType = .numberPad
-                case "1":
-                    tf.placeholder = "Время __:__"
+            case TypeResult.time.rawValue:
+                tf.placeholder = LeaderboardAlertField.time.rawValue
                     tf.keyboardType = .numbersAndPunctuation
             default:
                 break
             }
         }
         
-        let genderSegment = UISegmentedControl(items: ["Парень", "Девушка"])
+        let genderSegment = UISegmentedControl(items: [LeaderboardButtonText.boy.rawValue, LeaderboardButtonText.girl.rawValue])
         genderSegment.selectedSegmentIndex = 0
         alert.view.addSubview(genderSegment)
         genderSegment.snp.makeConstraints {
@@ -159,8 +158,8 @@ extension LeaderboardViewController: ILeaderboardView {
             $0.height.equalTo(30)
         }
         
-        alert.addAction(UIAlertAction(title: "Отмена", style: .cancel))
-        alert.addAction(UIAlertAction(title: "Сохранить",
+        alert.addAction(UIAlertAction(title: LeaderboardButtonText.cancel.rawValue, style: .cancel))
+        alert.addAction(UIAlertAction(title: LeaderboardButtonText.save.rawValue,
                                       style: .default,
                                       handler: { [weak self] _ in
             guard let self = self else { return }
@@ -169,9 +168,9 @@ extension LeaderboardViewController: ILeaderboardView {
             
             let resultText = alert.textFields?[1].text ?? "0"
                 switch workoutTypeResult {
-                case "0":
+                case TypeResult.count.rawValue:
                     resultValue = Int(resultText) ?? 0
-                case "1":
+                case TypeResult.time.rawValue:
                     resultValue = convertStringToSeconds(time: resultText) //сделать проверку, результат запихнуть в презентер, пусть он конвертить время
                 default:
                     break
@@ -179,13 +178,13 @@ extension LeaderboardViewController: ILeaderboardView {
             
             switch genderSegment.selectedSegmentIndex {
             case 0:
-                gender = "male"
+                gender = Gender.male.rawValue
             case 1:
-                gender = "female"
+                gender = Gender.female.rawValue
             default:
                 break
             }
-            leaderboardPresenter.addResult(name: name, result: resultValue, gender: gender)
+            leaderboardPresenter?.addResult(name: name, result: resultValue, gender: gender)
             
         }))
         present(alert, animated: true)
@@ -193,6 +192,8 @@ extension LeaderboardViewController: ILeaderboardView {
     
     func convertStringToSeconds(time: String) -> Int {
         let components = time.split(separator: ":")
+        
+        guard components.count == 2 else { return 0 }
         let minutes = Int(components[0]) ?? 0
         let seconds = Int(components[1]) ?? 0
         let totalScore = minutes * 60 + seconds
