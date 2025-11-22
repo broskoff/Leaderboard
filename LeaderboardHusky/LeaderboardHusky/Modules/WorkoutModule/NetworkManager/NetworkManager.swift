@@ -1,10 +1,10 @@
 import Foundation
 
-protocol INetworkManagerWorkoutsList {
+protocol INetworkManagerWorkoutsList: AnyObject {
     func getWorkouts(completion: @escaping (Result<[IWorkoutsListModel], ServiceError>) -> Void)
 }
 
-protocol INetworkManagerWorkoutSelected {
+protocol INetworkManagerWorkoutSelected: AnyObject {
     func getWorkoutSelected(id: Int, completion: @escaping (Result<[IWorkoutSelectedModel], ServiceError>) -> Void)
 }
 
@@ -17,7 +17,7 @@ enum ServiceError: Error {
 }
 
 final class NetworkManager: INetworkManagerWorkoutsList, INetworkManagerWorkoutSelected {
-    private let networkServiceBaseURL = URLText.baseURL.rawValue
+    private let networkServiceBaseURL = URLText.baseURL
     
     func getWorkouts(completion: @escaping (Result<[IWorkoutsListModel], ServiceError>) -> Void) {
         
@@ -37,10 +37,10 @@ final class NetworkManager: INetworkManagerWorkoutsList, INetworkManagerWorkoutS
                 let status = httpResponse.statusCode
                 
                 switch status {
-                case 200..<300:
-                    print("Успех")
+                case StatusText.codeStatus200..<StatusText.codeStatus300:
+                    print(StatusText.success)
                 default:
-                    print("Ошибка")
+                    print(StatusText.error)
                     completion(.failure(.badStatusCode(status)))
                     return
                 }
@@ -63,7 +63,7 @@ final class NetworkManager: INetworkManagerWorkoutsList, INetworkManagerWorkoutS
     
     func getWorkoutSelected(id: Int,
                             completion: @escaping (Result<[IWorkoutSelectedModel], ServiceError>) -> Void) {
-        guard let url = URL(string: "\(URLText.baseURLForWorkout.rawValue)\(id)") else {
+        guard let url = URL(string: "\(URLText.baseURLForWorkout)\(id)") else {
             completion(.failure(.invalidURL))
             return
         }
@@ -79,10 +79,10 @@ final class NetworkManager: INetworkManagerWorkoutsList, INetworkManagerWorkoutS
                 let status = httpResponse.statusCode
                 
                 switch status {
-                case 200..<300:
-                    print("Успех")
+                case StatusText.codeStatus200..<StatusText.codeStatus300:
+                    print(StatusText.success)
                 default:
-                    print("Ошибка badStatusCode")
+                    print(StatusText.badStatusCode)
                     completion(.failure(.badStatusCode(status)))
                     return
                 }

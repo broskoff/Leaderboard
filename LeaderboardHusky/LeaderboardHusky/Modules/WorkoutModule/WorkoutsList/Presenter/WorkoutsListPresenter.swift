@@ -1,4 +1,4 @@
-protocol IWorkoutsListPresenter {
+protocol IWorkoutsListPresenter: AnyObject {
     func getData()
 }
 
@@ -25,15 +25,15 @@ final class WorkoutsListPresenter: IWorkoutsListPresenter {
             case .failure(let error):
                 switch error {
                 case .invalidURL:
-                    print("Неверный URL")
+                    print(ErrorTextsPrint.invalidURL)
                 case .noData:
-                    print("Нет данных")
+                    print(ErrorTextsPrint.noData)
                 case .networkError(let error):
-                    print("Ошибка сети: \(error.localizedDescription)")
+                    print("\(ErrorTextsPrint.networkError) \(error.localizedDescription)")
                 case .parsingError(let error):
-                    print("Ошибка парсинга: \(error)")
+                    print("\(ErrorTextsPrint.parsingError)  \(error)")
                 case .badStatusCode(let status):
-                    print("Ошибка, статус код: \(status)")
+                    print("\(ErrorTextsPrint.badStatusCode) \(status)")
                 }
             }
         }

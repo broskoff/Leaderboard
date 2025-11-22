@@ -1,46 +1,57 @@
-enum Gender: String {
-    case male = "male"
-    case female = "female"
+struct Gender {
+    static let male = "male"
+    static let female = "female"
 }
 
-enum TypeResult: String {
-    case count = "0"
-    case time = "1"
+struct TypeResult {
+    static let count = "0"
+    static let time = "1"
 }
 
-enum LeaderboardText: String {
-    case delete = "Удалить"
-    case ok = "Ок"
-    case addResult = "Добавить результат"
-    case space = "\n\n\n"
+struct LeaderboardText {
+    static let delete = "Удалить"
+    static let ok = "Ок"
+    static let addResult = "Добавить результат"
+    static let space = "\n\n\n"
 }
 
-enum LeaderboardAlertField: String {
-    case name = "Имя"
-    case countRep = "Количество повторов"
-    case time = "Время __:__"
+struct LeaderboardAlertField {
+    static let name = "Имя"
+    static let countRep = "Количество повторов"
+    static let time = "Время __:__"
 }
 
-enum LeaderboardButtonText: String {
-    case boy = "Парень"
-    case girl = "Девушка"
-    case cancel = "Отмена"
-    case save = "Сохранить"
-    case leaderboard = "Лидерборд"
+struct LeaderboardButtonText {
+    static let boy = "Парень"
+    static let girl = "Девушка"
+    static let cancel = "Отмена"
+    static let save = "Сохранить"
+    static let leaderboard = "Лидерборд"
 }
 
-enum LeaderboardPresenterTextMessage: String {
-    case noResults = "Пока нет результатов"
-    case beFirst = "Будь первым!"
+struct LeaderboardPresenterTextMessage {
+    static let noResults = "Пока нет результатов"
+    static let beFirst = "Будь первым!"
 }
 
-enum LeaderboardSegmentControlText: String {
-    case boys = "Парени"
-    case girls = "Девушки"
+struct LeaderboardSegmentControlText {
+    static let boys = "Парени"
+    static let girls = "Девушки"
 }
 
-enum Headlines: String {
-    case workouts = "Список тренировок"
-    case workout = "Тренировка"
-    case leaderboard = "Лидерборд"
+struct Headlines  {
+    static let workouts = "Список тренировок"
+    static let workout = "Тренировка"
+    static let leaderboard = "Лидерборд"
 }
+
+struct ErrorText  {
+    static let fetch = "Ошибка извлечения результата:"
+    static let save = "Ошибка сохранения результата:"
+}
+
+struct WorkoutsList {
+    static let widthCellCollectionView = 170
+    static let heightCellCollectionView = 190
+}
+

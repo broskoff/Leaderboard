@@ -47,25 +47,25 @@ private extension LeaderboardTableViewCell {
     
     func setupConstraints() {
         container.snp.makeConstraints {
-            $0.leading.trailing.equalToSuperview().inset(8)
-            $0.top.bottom.equalToSuperview().inset(2)
+            $0.leading.trailing.equalToSuperview().inset(IndentsLeaderboardTVCconteiner.leadingTrailing)
+            $0.top.bottom.equalToSuperview().inset(IndentsLeaderboardTVCconteiner.topBottom)
         }
         
         rankLabel.snp.makeConstraints {
-            $0.leading.equalToSuperview().inset(8)
+            $0.leading.equalToSuperview().inset(IndentsLeaderboardTVCRankLabel.leading)
             $0.centerY.equalToSuperview()
-            $0.width.equalTo(30)
+            $0.width.equalTo(IndentsLeaderboardTVCRankLabel.width)
         }
         
         resultLabel.snp.makeConstraints { 
-            $0.trailing.equalToSuperview().inset(8)
+            $0.trailing.equalToSuperview().inset(IndentsLeaderboardTVCResultLabel.trailing)
             $0.centerY.equalToSuperview()
-            $0.width.equalTo(60)
+            $0.width.equalTo(IndentsLeaderboardTVCResultLabel.width)
         }
         
         nameLabel.snp.makeConstraints {
-            $0.leading.equalTo(rankLabel.snp.trailing).offset(8)
-            $0.trailing.equalTo(resultLabel.snp.leading).offset(-8)
+            $0.leading.equalTo(rankLabel.snp.trailing).offset(IndentsLeaderboardTVCNameLabel.leading)
+            $0.trailing.equalTo(resultLabel.snp.leading).offset(IndentsLeaderboardTVCNameLabel.trailing)
             $0.centerY.equalToSuperview()
         }
     }

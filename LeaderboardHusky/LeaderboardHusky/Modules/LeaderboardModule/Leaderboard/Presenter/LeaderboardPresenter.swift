@@ -1,4 +1,4 @@
-protocol ILeaderboardPresenter {
+protocol ILeaderboardPresenter: AnyObject {
     func getData()
     func selectGender(index: Int)
     func addResult(name: String, result: Int, gender: String)
@@ -13,7 +13,7 @@ final class LeaderboardPresenter: ILeaderboardPresenter {
     private var workoutTypeResult: String
     private var view: ILeaderboardView
     private var dataManager: ILeaderboardDataManager
-    private var currentGender = Gender.male.rawValue
+    private var currentGender = Gender.male
     
     init(view: ILeaderboardView,
          selectedWorkout: (id: Int, typeResult: String, date: String),
@@ -40,9 +40,9 @@ final class LeaderboardPresenter: ILeaderboardPresenter {
     
     func selectGender(index: Int) {
         if index == 0 {
-            currentGender = Gender.male.rawValue
+            currentGender = Gender.male
         } else {
-            currentGender = Gender.female.rawValue
+            currentGender = Gender.female
         }
         
         loadAndShow()
@@ -50,18 +50,18 @@ final class LeaderboardPresenter: ILeaderboardPresenter {
     
     func addResult(name: String, result: Int, gender: String) {
         switch workoutTypeResult {
-        case TypeResult.count.rawValue:
+        case TypeResult.count:
             dataManager.addResult(name: name,
                                   result: result,
                                   gender: gender,
                                   workoutId: workoutId,
-                                  typeResult: TypeResult.count.rawValue)
-        case TypeResult.time.rawValue:
+                                  typeResult: TypeResult.count)
+        case TypeResult.time:
             dataManager.addResult(name: name,
                                   result: result,
                                   gender: gender,
                                   workoutId: workoutId,
-                                  typeResult: TypeResult.time.rawValue)
+                                  typeResult: TypeResult.time)
         default: break
         }
         loadAndShow()
@@ -78,8 +78,8 @@ final class LeaderboardPresenter: ILeaderboardPresenter {
                                              gender: currentGender,
                                              typeResult: workoutTypeResult)
         if users.isEmpty {
-            view.showForEmptyLeaderboard(title: LeaderboardPresenterTextMessage.noResults.rawValue,
-                                         message: LeaderboardPresenterTextMessage.beFirst.rawValue)
+            view.showForEmptyLeaderboard(title: LeaderboardPresenterTextMessage.noResults,
+                                         message: LeaderboardPresenterTextMessage.beFirst)
             view.setLeaderboardData(users: [], workoutTypeResult: workoutTypeResult)
             return
         }

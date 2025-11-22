@@ -43,7 +43,7 @@ final class WorkoutSelectedViewController: UIViewController, IWorkoutSelectedVie
             DispatchQueue.main.async {
                 self.workoutSelectedView.workoutImageView.image = UIImage(data: imageData)
                 self.workoutSelectedView.workoutDescriptionTV.text = workout.description
-                self.title = "\(Headlines.workout.rawValue) \(workout.date)"
+                self.title = "\(Headlines.workout) \(workout.date)"
                 self.selectedWorkout = workout
                 self.hideLoadingState()
             }

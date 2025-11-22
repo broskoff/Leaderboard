@@ -74,7 +74,7 @@ extension LeaderboardViewController: UITableViewDelegate {
                    trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         let deleteAction = UIContextualAction(style: .destructive,
-                                              title: LeaderboardText.delete.rawValue) { [weak self] _, _, _ in
+                                              title: LeaderboardText.delete) { [weak self] _, _, _ in
             guard let self = self else { return }
             
             let deleteResult = userResults[indexPath.row]
@@ -88,7 +88,7 @@ extension LeaderboardViewController: UITableViewDelegate {
 
 extension LeaderboardViewController: ILeaderboardView {
     func setupLeaderboardTitle(workoutDate: String) {
-        title = "\(Headlines.leaderboard.rawValue) \(workoutDate)"
+        title = "\(Headlines.leaderboard) \(workoutDate)"
     }
     
     func setLeaderboardData(users: [UserResult], workoutTypeResult: String) {
@@ -99,10 +99,10 @@ extension LeaderboardViewController: ILeaderboardView {
             guard let name = user.name else { return }
             
             var resultText = ""
-            switch workoutTypeResult { //обратный конвертер времени утащить в презентер
-            case TypeResult.count.rawValue:
+            switch workoutTypeResult { 
+            case TypeResult.count:
                 resultText = "\(user.resultCount)"
-            case TypeResult.time.rawValue:
+            case TypeResult.time:
                 let totalSeconds = user.resultTime
                 let minutes = totalSeconds / 60
                 let seconds = totalSeconds % 60
@@ -123,7 +123,7 @@ extension LeaderboardViewController: ILeaderboardView {
     
     func showForEmptyLeaderboard(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: LeaderboardText.ok.rawValue, style: .default))
+        alert.addAction(UIAlertAction(title: LeaderboardText.ok, style: .default))
         present(alert, animated: true)
     }
     
@@ -132,22 +132,22 @@ extension LeaderboardViewController: ILeaderboardView {
         var resultValue = 0
         var gender = ""
         
-        let alert = UIAlertController(title: LeaderboardText.addResult.rawValue, message: LeaderboardText.space.rawValue, preferredStyle: .alert)
-        alert.addTextField { $0.placeholder = LeaderboardAlertField.name.rawValue }
+        let alert = UIAlertController(title: LeaderboardText.addResult, message: LeaderboardText.space, preferredStyle: .alert)
+        alert.addTextField { $0.placeholder = LeaderboardAlertField.name }
         alert.addTextField { tf in
             switch workoutTypeResult {
-            case TypeResult.count.rawValue:
-                tf.placeholder = LeaderboardAlertField.countRep.rawValue
+            case TypeResult.count:
+                tf.placeholder = LeaderboardAlertField.countRep
                 tf.keyboardType = .numberPad
-            case TypeResult.time.rawValue:
-                tf.placeholder = LeaderboardAlertField.time.rawValue
+            case TypeResult.time:
+                tf.placeholder = LeaderboardAlertField.time
                 tf.keyboardType = .numbersAndPunctuation
             default:
                 break
             }
         }
         
-        let genderSegment = UISegmentedControl(items: [LeaderboardButtonText.boy.rawValue, LeaderboardButtonText.girl.rawValue])
+        let genderSegment = UISegmentedControl(items: [LeaderboardButtonText.boy, LeaderboardButtonText.girl])
         genderSegment.selectedSegmentIndex = 0
         alert.view.addSubview(genderSegment)
         genderSegment.snp.makeConstraints {
@@ -156,8 +156,8 @@ extension LeaderboardViewController: ILeaderboardView {
             $0.height.equalTo(30)
         }
         
-        alert.addAction(UIAlertAction(title: LeaderboardButtonText.cancel.rawValue, style: .cancel))
-        alert.addAction(UIAlertAction(title: LeaderboardButtonText.save.rawValue,
+        alert.addAction(UIAlertAction(title: LeaderboardButtonText.cancel, style: .cancel))
+        alert.addAction(UIAlertAction(title: LeaderboardButtonText.save,
                                       style: .default,
                                       handler: { [weak self] _ in
             guard let self = self else { return }
@@ -166,9 +166,9 @@ extension LeaderboardViewController: ILeaderboardView {
             
             let resultText = alert.textFields?[1].text ?? "0"
             switch workoutTypeResult {
-            case TypeResult.count.rawValue:
+            case TypeResult.count:
                 resultValue = Int(resultText) ?? 0
-            case TypeResult.time.rawValue:
+            case TypeResult.time:
                 resultValue = convertStringToSeconds(time: resultText) //сделать проверку, результат запихнуть в презентер, пусть он конвертить время
             default:
                 break
@@ -176,9 +176,9 @@ extension LeaderboardViewController: ILeaderboardView {
             
             switch genderSegment.selectedSegmentIndex {
             case 0:
-                gender = Gender.male.rawValue
+                gender = Gender.male
             case 1:
-                gender = Gender.female.rawValue
+                gender = Gender.female
             default:
                 break
             }

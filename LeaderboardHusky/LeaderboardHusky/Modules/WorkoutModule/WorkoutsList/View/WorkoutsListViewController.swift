@@ -19,7 +19,7 @@ final class WorkoutsListViewController: UIViewController, IWorkoutsListView  {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = Headlines.workouts.rawValue
+        title = Headlines.workouts
         
         configWorkoutsCollectionView()
         workoutsListPresenter?.getData()
@@ -81,6 +81,7 @@ extension WorkoutsListViewController: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: 170, height: 190)
+        return CGSize(width: WorkoutsList.widthCellCollectionView,
+                      height: WorkoutsList.heightCellCollectionView)
     }
 }

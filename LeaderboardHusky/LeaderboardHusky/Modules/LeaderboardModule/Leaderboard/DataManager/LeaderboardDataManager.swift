@@ -1,7 +1,7 @@
 import UIKit
 import CoreData
 
-protocol ILeaderboardDataManager {
+protocol ILeaderboardDataManager: AnyObject {
     func fetchResults(for workoutId: Int, gender: String, typeResult: String) -> [UserResult]
     func addResult(name: String, result: Int, gender: String, workoutId: Int, typeResult: String)
     func deleteContext(object: UserResult)
@@ -14,16 +14,16 @@ final class LeaderboardDataManager: ILeaderboardDataManager {
     }
     
     func fetchResults(for workoutId: Int, gender: String, typeResult: String) -> [UserResult] {
-        let request: NSFetchRequest<UserResult> = UserResult.fetchRequest()
-        var predicates: [NSPredicate] = [NSPredicate(format: "workout.id == %d", workoutId)]
+        let request = UserResult.fetchRequest()
+        var predicates = [NSPredicate(format: "workout.id == %d", workoutId)]
         
         predicates.append(NSPredicate(format: "gender == %@", gender))
         request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
         
         switch typeResult {
-        case TypeResult.count.rawValue:
+        case TypeResult.count:
             request.sortDescriptors = [NSSortDescriptor(key: "resultCount", ascending: false)]
-        case TypeResult.time.rawValue:
+        case TypeResult.time:
             request.sortDescriptors = [NSSortDescriptor(key: "resultTime", ascending: true)]
         default:
             break
@@ -32,7 +32,7 @@ final class LeaderboardDataManager: ILeaderboardDataManager {
         do {
             return try context.fetch(request)
         } catch {
-            print("Ошибка извлечения результата: \(error)")
+            print("\(ErrorText.fetch) \(error)")
             return []
         }
     }
@@ -60,7 +60,7 @@ final class LeaderboardDataManager: ILeaderboardDataManager {
         do {
             try context.save()
         } catch {
-            print("Ошибка сохранения результата: \(error)")
+            print("\(ErrorText.save) \(error)")
         }
     }
     
@@ -70,7 +70,7 @@ final class LeaderboardDataManager: ILeaderboardDataManager {
         do {
             try context.save()
         } catch {
-            print("Ошибка сохранения результата: \(error)")
+            print("\(ErrorText.save) \(error)")
         }
     }
     
@@ -81,7 +81,7 @@ final class LeaderboardDataManager: ILeaderboardDataManager {
         do {
             return try context.fetch(request).first
         } catch {
-            print("Ошибка извлечения результата: \(error)")
+            print("\(ErrorText.fetch) \(error)")
             return nil
         }
     }

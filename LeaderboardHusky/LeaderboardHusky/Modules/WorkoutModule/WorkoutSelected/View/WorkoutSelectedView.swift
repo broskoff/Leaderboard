@@ -40,7 +40,7 @@ private extension WorkoutSelectedView {
         
         leaderboardButton = UIButton(type: .system)
         leaderboardButton.backgroundColor = .black
-        leaderboardButton.setTitle(LeaderboardButtonText.leaderboard.rawValue, for: .normal)
+        leaderboardButton.setTitle(LeaderboardButtonText.leaderboard, for: .normal)
         leaderboardButton.titleLabel?.font = .systemFont(ofSize: 22, weight: .regular)
         leaderboardButton.setTitleColor(.systemBlue, for: .normal)
         leaderboardButton.layer.cornerRadius = 8

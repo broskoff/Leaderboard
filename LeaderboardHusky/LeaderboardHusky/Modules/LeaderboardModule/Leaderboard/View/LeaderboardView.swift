@@ -6,8 +6,8 @@ final class LeaderboardView: UIView {
     var addResultButton = UIButton(type: .system)
     
     lazy var leaderboardSegmentControl = UISegmentedControl(items: [
-        LeaderboardSegmentControlText.boys.rawValue,
-        LeaderboardSegmentControlText.girls.rawValue
+        LeaderboardSegmentControlText.boys,
+        LeaderboardSegmentControlText.girls
     ])
     
     override init(frame: CGRect) {
@@ -55,20 +55,20 @@ private extension LeaderboardView {
     
     func setupConstraints() {
         leaderboardSegmentControl.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide.snp.top).offset(16)
-            $0.leading.trailing.equalToSuperview().inset(16)
+            $0.top.equalTo(safeAreaLayoutGuide.snp.top).offset(IndentsLeaderboardSC.top)
+            $0.leading.trailing.equalToSuperview().inset(IndentsLeaderboardSC.leadingTrailing)
         }
         
         leaderboardTableView.snp.makeConstraints {
-            $0.top.equalTo(leaderboardSegmentControl.snp.bottom).offset(12)
+            $0.top.equalTo(leaderboardSegmentControl.snp.bottom).offset(IndentsLeaderboardTV.top)
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalToSuperview()
         }
         
         addResultButton.snp.makeConstraints {
-            $0.width.height.equalTo(56)
-            $0.trailing.equalToSuperview().inset(24)
-            $0.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).inset(16)
+            $0.width.height.equalTo(IndentsLeaderboardButton.widthHeight)
+            $0.trailing.equalToSuperview().inset(IndentsLeaderboardButton.trailing)
+            $0.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).inset(IndentsLeaderboardButton.bottom)
         }
     }
 }

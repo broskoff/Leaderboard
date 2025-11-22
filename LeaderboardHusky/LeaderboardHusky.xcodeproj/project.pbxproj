@@ -25,6 +25,7 @@
 		C77C3DEF2EC7763F00ABCD93 /* LeaderboardHusky.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C77C3DE62EC7763F00ABCD93 /* LeaderboardHusky.xcdatamodeld */; };
 		C77C3DF02EC7763F00ABCD93 /* WorkoutsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77C3DE72EC7763F00ABCD93 /* WorkoutsListViewController.swift */; };
 		C77C3DF12EC7763F00ABCD93 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77C3DE82EC7763F00ABCD93 /* SceneDelegate.swift */; };
+		C78628592ED1D18C00C56A53 /* NumericConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78628582ED1D18C00C56A53 /* NumericConstants.swift */; };
 		C7AE19C12EC8512B00D8C2D8 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AE19C02EC8512B00D8C2D8 /* AppCoordinator.swift */; };
 		C7AE19C62EC8519800D8C2D8 /* ICoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AE19C42EC8519800D8C2D8 /* ICoordinator.swift */; };
 		C7AE19C92EC8542E00D8C2D8 /* TrainingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AE19C82EC8542E00D8C2D8 /* TrainingCoordinator.swift */; };
@@ -63,6 +64,7 @@
 		C77C3DE72EC7763F00ABCD93 /* WorkoutsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsListViewController.swift; sourceTree = "<group>"; };
 		C77C3DE82EC7763F00ABCD93 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		C77C3DEA2EC7763F00ABCD93 /* LeaderboardHusky.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LeaderboardHusky.xcdatamodel; sourceTree = "<group>"; };
+		C78628582ED1D18C00C56A53 /* NumericConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumericConstants.swift; sourceTree = "<group>"; };
 		C7AE19C02EC8512B00D8C2D8 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		C7AE19C42EC8519800D8C2D8 /* ICoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICoordinator.swift; sourceTree = "<group>"; };
 		C7AE19C82EC8542E00D8C2D8 /* TrainingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingCoordinator.swift; sourceTree = "<group>"; };
@@ -99,12 +101,12 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		C713F5CF2ECE01740073886E /* ServiceManager */ = {
+		C713F5CF2ECE01740073886E /* DataManager */ = {
 			isa = PBXGroup;
 			children = (
 				C713F5D02ECE01860073886E /* LeaderboardDataManager.swift */,
 			);
-			path = ServiceManager;
+			path = DataManager;
 			sourceTree = "<group>";
 		};
 		C71769492ECA100D003BCC98 /* WorkoutSelected */ = {
@@ -147,6 +149,7 @@
 			children = (
 				C7605EE52ED0C575000C11F5 /* TextConstants.swift */,
 				C7605EE72ED0C751000C11F5 /* TextConstantsNetworkManager.swift */,
+				C78628582ED1D18C00C56A53 /* NumericConstants.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -281,7 +284,7 @@
 		C7D1BADC2ECB6B1800230CF2 /* Leaderboard */ = {
 			isa = PBXGroup;
 			children = (
-				C713F5CF2ECE01740073886E /* ServiceManager */,
+				C713F5CF2ECE01740073886E /* DataManager */,
 				C7D1BADF2ECB6B3B00230CF2 /* Model */,
 				C7D1BADE2ECB6B3300230CF2 /* View */,
 				C7D1BADD2ECB6B2D00230CF2 /* Presenter */,
@@ -416,6 +419,7 @@
 				C77C3DEF2EC7763F00ABCD93 /* LeaderboardHusky.xcdatamodeld in Sources */,
 				C7AE19C12EC8512B00D8C2D8 /* AppCoordinator.swift in Sources */,
 				C71769462EC991B9003BCC98 /* WorkoutsListModel.swift in Sources */,
+				C78628592ED1D18C00C56A53 /* NumericConstants.swift in Sources */,
 				C7AE19C62EC8519800D8C2D8 /* ICoordinator.swift in Sources */,
 				C7C5AA862ECA1F870078F182 /* WorkoutSelectedViewController.swift in Sources */,
 				C7D1BADB2ECAD89A00230CF2 /* WorkoutSelectedPresenter.swift in Sources */,
