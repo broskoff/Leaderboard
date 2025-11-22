@@ -1,7 +1,6 @@
 import UIKit
 
 final class ScreenFactory {
-    
     static func createWorkoutsListScreen() -> WorkoutsListViewController {
         let networkManager = NetworkManager()
         let view = WorkoutsListViewController()

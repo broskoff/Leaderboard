@@ -30,12 +30,12 @@ struct LeaderboardButtonText {
 }
 
 struct LeaderboardPresenterTextMessage {
-    static let noResults = "Пока нет результатов"
-    static let beFirst = "Будь первым!"
+    static let noResults = "Лидерборд пуст"
+    static let beFirst = "Добавь первый результат!"
 }
 
 struct LeaderboardSegmentControlText {
-    static let boys = "Парени"
+    static let boys = "Парни"
     static let girls = "Девушки"
 }
 

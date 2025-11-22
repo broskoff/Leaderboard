@@ -15,7 +15,7 @@ final class AppCoordinator: ICoordinator {
     }
     
     private func showTrainingCoordinator() {
-        let trainingCoordinator = CoordinatorFactory().createTrainingCoordinator(navigationController: navigationController)
+        let trainingCoordinator = CoordinatorFactory.createTrainingCoordinator(navigationController: navigationController)
         
         childCoordinators.append(trainingCoordinator)
         trainingCoordinator.start()

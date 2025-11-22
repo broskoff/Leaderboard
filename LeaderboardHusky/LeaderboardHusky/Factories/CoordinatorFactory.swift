@@ -2,11 +2,11 @@ import UIKit
 
 final class CoordinatorFactory {
     
-    func createAppCoordinator(navigationController: UINavigationController) -> AppCoordinator {
+    static func createAppCoordinator(navigationController: UINavigationController) -> AppCoordinator {
         AppCoordinator(navigationController: navigationController)
     }
     
-    func createTrainingCoordinator(navigationController: UINavigationController) -> TrainingCoordinator {
+    static func createTrainingCoordinator(navigationController: UINavigationController) -> TrainingCoordinator {
         TrainingCoordinator(navigationController: navigationController)
     }
 }
