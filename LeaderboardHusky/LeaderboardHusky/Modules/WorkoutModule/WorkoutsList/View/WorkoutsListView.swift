@@ -7,6 +7,7 @@ final class WorkoutsListView: UIView {
         let activityIndicatorView = UIActivityIndicatorView()
         activityIndicatorView.style = .large
         activityIndicatorView.color = .systemBlue
+        activityIndicatorView.startAnimating()
         return activityIndicatorView
     }()
     

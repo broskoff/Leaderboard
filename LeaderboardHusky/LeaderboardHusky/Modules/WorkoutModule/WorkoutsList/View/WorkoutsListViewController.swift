@@ -1,16 +1,21 @@
 import UIKit
 
+enum StateWorkoutsListScreen {
+    case loading
+    case loaded([IWorkoutsListModel])
+    case error(ServiceError)
+}
+
 protocol IWorkoutsListView: AnyObject {
-    func setDataInCell(_ data: [IWorkoutsListModel])
-    func setLoadingState()
+    func render(state: StateWorkoutsListScreen)
 }
 
 final class WorkoutsListViewController: UIViewController, IWorkoutsListView  {
     var completionHandler: ((Int) -> ())?
     var workoutsListPresenter: IWorkoutsListPresenter?
     
-    private let workoutsListView = WorkoutsListView()
     private var workouts: [IWorkoutsListModel] = []
+    private let workoutsListView = WorkoutsListView()
     
     override func loadView() {
         view = workoutsListView
@@ -20,9 +25,8 @@ final class WorkoutsListViewController: UIViewController, IWorkoutsListView  {
         super.viewDidLoad()
         
         title = Headlines.workouts
-        
-        configWorkoutsCollectionView()
         workoutsListPresenter?.getData()
+        configWorkoutsCollectionView()
     }
     
     private func configWorkoutsCollectionView() {
@@ -32,30 +36,6 @@ final class WorkoutsListViewController: UIViewController, IWorkoutsListView  {
             WorkoutsListCollectionViewCell.self,
             forCellWithReuseIdentifier: WorkoutsListCollectionViewCell.id
         )
-    }
-    
-    func setDataInCell(_ data: [IWorkoutsListModel]) {
-        DispatchQueue.main.async {
-            self.workouts = data
-            self.workoutsListView.workoutsCollectionView.reloadData()
-            self.hideLoadingState()
-        }
-    }
-    
-    func setLoadingState() {
-        workoutsListView.activityIndicatorView.startAnimating()
-        workoutsListView.activityIndicatorView.isHidden = false
-    }
-    
-    private func hideLoadingState() {
-        self.workoutsListView.activityIndicatorView.stopAnimating()
-    }
-}
-
-extension WorkoutsListViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedWorkout = workouts[indexPath.row].id
-        completionHandler?(selectedWorkout)
     }
 }
 
@@ -76,6 +56,13 @@ extension WorkoutsListViewController: UICollectionViewDataSource {
     }
 }
 
+extension WorkoutsListViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedWorkout = workouts[indexPath.row].id
+        completionHandler?(selectedWorkout)
+    }
+}
+
 extension WorkoutsListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
@@ -83,5 +70,22 @@ extension WorkoutsListViewController: UICollectionViewDelegateFlowLayout {
         
         return CGSize(width: WorkoutsList.widthCellCollectionView,
                       height: WorkoutsList.heightCellCollectionView)
+    }
+}
+
+extension WorkoutsListViewController {
+    func render(state: StateWorkoutsListScreen) {
+        switch state {
+        case .loading:
+            self.workoutsListView.activityIndicatorView.isHidden = false
+            self.workoutsListView.workoutsCollectionView.isHidden = true
+        case .loaded(let workouts):
+            self.workoutsListView.activityIndicatorView.isHidden = true
+            self.workoutsListView.workoutsCollectionView.isHidden = false
+            self.workouts = workouts
+            self.workoutsListView.workoutsCollectionView.reloadData()
+        case .error(let error):
+            print(error)
+        }
     }
 }
