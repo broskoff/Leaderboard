@@ -1,30 +1,36 @@
+import Foundation
+
 protocol IWorkoutPresenter: AnyObject {
     func getData()
 }
 
 final class WorkoutSelectedPresenter: IWorkoutPresenter {
-    private var model: [IWorkoutSelectedModel] = []
     private var view: IWorkoutSelectedView
-    private var networkManager: INetworkManagerWorkoutSelected
-    private var selectedWorkoutID: Int
+    private var networkManager: INetworkManager
+    private var selectedWorkoutId: Int
     
-    init(view: IWorkoutSelectedView, selectedWorkoutID: Int, networkManager: INetworkManagerWorkoutSelected) {
+    init(view: IWorkoutSelectedView, selectedWorkoutID: Int, networkManager: INetworkManager) {
         self.view = view
-        self.selectedWorkoutID = selectedWorkoutID
+        self.selectedWorkoutId = selectedWorkoutID
         self.networkManager = networkManager
     }
     
     func getData() {
-        view.setLoadingState()
+        view.render(state: .loading)
         
-        networkManager.getWorkoutSelected(id: selectedWorkoutID) { [weak self] result in
+        networkManager.loadData(from: .baseURLForWorkout,
+                                for: [WorkoutSelectedModel].self,
+                                id: selectedWorkoutId) { [weak self] result in
             guard let self = self else { return }
             
             switch result {
-            case .success(let workouts):
-                self.model = workouts
-                self.view.setDataForImageAndDescription(workouts: model, id: selectedWorkoutID)
+            case .success(let workout):
+                    self.view.setDataForImageAndDescription(workouts: workout, id: selectedWorkoutId)
+                DispatchQueue.main.async {
+                    self.view.render(state: .loaded)
+                }
             case .failure(let error):
+                view.render(state: .error(error))
                 switch error {
                 case .invalidURL:
                     print(ErrorTextsPrint.invalidURL)

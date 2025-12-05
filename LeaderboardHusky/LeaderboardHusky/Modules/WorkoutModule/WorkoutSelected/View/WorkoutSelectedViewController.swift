@@ -1,8 +1,14 @@
 import UIKit
 
+enum StateWorkoutSelectedScreen {
+    case loading
+    case loaded
+    case error(ServiceError)
+}
+
 protocol IWorkoutSelectedView: AnyObject {
     func setDataForImageAndDescription(workouts: [IWorkoutSelectedModel], id selectedWorkout: Int)
-    func setLoadingState()
+    func render(state: StateWorkoutSelectedScreen)
 }
 
 final class WorkoutSelectedViewController: UIViewController, IWorkoutSelectedView  {
@@ -45,17 +51,26 @@ final class WorkoutSelectedViewController: UIViewController, IWorkoutSelectedVie
                 self.workoutSelectedView.workoutDescriptionTV.text = workout.description
                 self.title = "\(Headlines.workout) \(workout.date)"
                 self.selectedWorkout = workout
-                self.hideLoadingState()
             }
         }
     }
-    
-    func setLoadingState() {
-        workoutSelectedView.activityIndicatorView.startAnimating()
-        workoutSelectedView.activityIndicatorView.isHidden = false
-    }
-    
-    private func hideLoadingState() {
-        workoutSelectedView.activityIndicatorView.stopAnimating()
+}
+
+extension WorkoutSelectedViewController {
+    func render(state: StateWorkoutSelectedScreen) {
+        switch state {
+        case .loading:
+            self.workoutSelectedView.activityIndicatorView.isHidden = false
+            self.workoutSelectedView.workoutImageView.isHidden = true
+            self.workoutSelectedView.workoutDescriptionTV.isHidden = true
+            self.workoutSelectedView.leaderboardButton.isHidden = true
+        case .loaded:
+            self.workoutSelectedView.activityIndicatorView.isHidden = true
+            self.workoutSelectedView.workoutImageView.isHidden = false
+            self.workoutSelectedView.workoutDescriptionTV.isHidden = false
+            self.workoutSelectedView.leaderboardButton.isHidden = false
+        case .error(let error):
+            print(error)
+        }
     }
 }

@@ -39,6 +39,7 @@
 		C786288F2ED21E4D00C56A53 /* 11.png in Resources */ = {isa = PBXBuildFile; fileRef = C78628842ED21E4D00C56A53 /* 11.png */; };
 		C78628902ED21E4D00C56A53 /* 12.png in Resources */ = {isa = PBXBuildFile; fileRef = C78628852ED21E4D00C56A53 /* 12.png */; };
 		C78628912ED21E4D00C56A53 /* 6.png in Resources */ = {isa = PBXBuildFile; fileRef = C786287F2ED21E4D00C56A53 /* 6.png */; };
+		C7AC65B92EDFF9C00047A89B /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AC65B82EDFF9C00047A89B /* StorageManager.swift */; };
 		C7AE19C12EC8512B00D8C2D8 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AE19C02EC8512B00D8C2D8 /* AppCoordinator.swift */; };
 		C7AE19C62EC8519800D8C2D8 /* ICoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AE19C42EC8519800D8C2D8 /* ICoordinator.swift */; };
 		C7AE19C92EC8542E00D8C2D8 /* TrainingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AE19C82EC8542E00D8C2D8 /* TrainingCoordinator.swift */; };
@@ -91,6 +92,7 @@
 		C78628832ED21E4D00C56A53 /* 10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 10.png; sourceTree = "<group>"; };
 		C78628842ED21E4D00C56A53 /* 11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 11.png; sourceTree = "<group>"; };
 		C78628852ED21E4D00C56A53 /* 12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 12.png; sourceTree = "<group>"; };
+		C7AC65B82EDFF9C00047A89B /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		C7AE19C02EC8512B00D8C2D8 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		C7AE19C42EC8519800D8C2D8 /* ICoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICoordinator.swift; sourceTree = "<group>"; };
 		C7AE19C82EC8542E00D8C2D8 /* TrainingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingCoordinator.swift; sourceTree = "<group>"; };
@@ -162,12 +164,13 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		C74296A12ED016E600513244 /* NetworkManager */ = {
+		C74296A12ED016E600513244 /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				C74296A22ED016FD00513244 /* NetworkManager.swift */,
+				C7AC65B82EDFF9C00047A89B /* StorageManager.swift */,
 			);
-			path = NetworkManager;
+			path = Services;
 			sourceTree = "<group>";
 		};
 		C7605EFD2ED0F118000C11F5 /* Utils */ = {
@@ -293,7 +296,7 @@
 		C7AE19CF2EC8747700D8C2D8 /* WorkoutModule */ = {
 			isa = PBXGroup;
 			children = (
-				C74296A12ED016E600513244 /* NetworkManager */,
+				C74296A12ED016E600513244 /* Services */,
 				C71769492ECA100D003BCC98 /* WorkoutSelected */,
 				C7AE19D02EC874EB00D8C2D8 /* WorkoutsList */,
 			);
@@ -502,6 +505,7 @@
 				C7AE19CD2EC859F900D8C2D8 /* CoordinatorFactory.swift in Sources */,
 				C77C3DF02EC7763F00ABCD93 /* WorkoutsListViewController.swift in Sources */,
 				C77C3DF12EC7763F00ABCD93 /* SceneDelegate.swift in Sources */,
+				C7AC65B92EDFF9C00047A89B /* StorageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
