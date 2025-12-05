@@ -1,10 +1,14 @@
 import UIKit
 
 final class ScreenFactory {
+   
     static func createWorkoutsListScreen() -> WorkoutsListViewController {
         let networkManager = NetworkManager()
+        let storageManager = StorageManager()
         let view = WorkoutsListViewController()
-        let presenter = WorkoutsListPresenter(view: view, networkManager: networkManager)
+        let presenter = WorkoutsListPresenter(view: view,
+                                              storageManager: storageManager,
+                                              networkManager: networkManager)
         
         view.workoutsListPresenter = presenter
         return view
@@ -13,7 +17,9 @@ final class ScreenFactory {
     static func createWorkoutSelectedScreen(workoutId: Int) -> WorkoutSelectedViewController {
         let networkManager = NetworkManager()
         let view = WorkoutSelectedViewController()
-        let presenter = WorkoutSelectedPresenter(view: view, selectedWorkoutID: workoutId, networkManager: networkManager)
+        let presenter = WorkoutSelectedPresenter(view: view,
+                                                 selectedWorkoutID: workoutId,
+                                                 networkManager: networkManager)
         
         view.workoutSelectedPresenter = presenter
         return view
