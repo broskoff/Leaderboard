@@ -2,8 +2,14 @@ import UIKit
 import SnapKit
 
 final class WorkoutsListCollectionViewCell: UICollectionViewCell {
-    
     static let id = "workoutCell"
+    
+    private let activityIndicatorImage: UIActivityIndicatorView = {
+        let activityIndicatorView = UIActivityIndicatorView()
+        activityIndicatorView.style = .medium
+        activityIndicatorView.color = .systemBlue
+        return activityIndicatorView
+    }()
     
     private var workoutImage = UIImageView()
     private var workoutDataLabel = UILabel()
@@ -19,16 +25,30 @@ final class WorkoutsListCollectionViewCell: UICollectionViewCell {
     }
     
     func setData(workout: String, date: String) {
-        let imageURL = URL(string: workout)
+        workoutImage.image = nil
+        activityIndicatorImage.startAnimating()
         
-        let queue = DispatchQueue.global(qos: .utility)
-        queue.async {
-            guard let url = imageURL, let imageData = try? Data(contentsOf: url) else { return }
-            DispatchQueue.main.async {
-                self.workoutImage.image = UIImage(data: imageData)
-            }
+        if let imageURL = URL(string: workout) {
+          
+            URLSession.shared.dataTask(with: imageURL) { [weak self] data, _,_ in
+                guard let self = self else { return }
+                
+                if let data = data, let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self.workoutImage.image = image
+                        self.activityIndicatorImage.stopAnimating()
+                    }
+                } else {
+                    print("Oшибка загрузки картинки в ячейку")
+                }
+            }.resume()
         }
         workoutDataLabel.text = date
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        workoutImage.image = nil
     }
     
     private func configCell() {
@@ -50,6 +70,7 @@ final class WorkoutsListCollectionViewCell: UICollectionViewCell {
     private func addSubviews() {
         contentView.addSubview(workoutImage)
         contentView.addSubview(workoutDataLabel)
+        contentView.addSubview(activityIndicatorImage)
     }
     
     private func addConstraint() {
@@ -61,6 +82,10 @@ final class WorkoutsListCollectionViewCell: UICollectionViewCell {
         workoutDataLabel.snp.makeConstraints {
             $0.top.equalTo(workoutImage.snp.bottom).offset(4)
             $0.centerX.equalToSuperview()
+        }
+        
+        activityIndicatorImage.snp.makeConstraints {
+            $0.center.equalToSuperview()
         }
     }
 }
