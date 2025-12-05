@@ -183,7 +183,6 @@ extension LeaderboardViewController: ILeaderboardView {
                 break
             }
             leaderboardPresenter?.addResult(name: name, result: resultValue, gender: gender)
-            
         }))
         present(alert, animated: true)
     }

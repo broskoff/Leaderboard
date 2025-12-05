@@ -44,7 +44,6 @@ final class LeaderboardDataManager: ILeaderboardDataManager {
         new.resultCount = Int16(result)
         new.resultTime = Int32(result)
         
-        
         if let workout = fetchWorkout(with: workoutId) {
             new.workout = workout
             workout.addToResults(new)

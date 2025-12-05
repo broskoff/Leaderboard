@@ -1,8 +1,7 @@
 struct URLText {
     static let baseURL = "https://69154abb84e8bd126af965b5.mockapi.io/api/v1/workouts"
-    static let  baseURLForWorkout = "https://69154abb84e8bd126af965b5.mockapi.io/api/v1/workouts?id="
+    static let baseURLForWorkout = "https://69154abb84e8bd126af965b5.mockapi.io/api/v1/workouts?id="
 }
-
 
 struct StatusText {
     static let success = "успех"
