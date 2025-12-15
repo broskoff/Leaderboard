@@ -22,9 +22,8 @@ final class WorkoutsListPresenter: IWorkoutsListPresenter {
     func getData() {
         view.render(state: .loading)
         
-        networkManager.loadData(from: .baseURL,
-                                for: [WorkoutsListModel].self,
-                                id: nil) { [weak self] result in
+        networkManager.loadData(from: .workouts,
+                                for: [WorkoutsListModel].self) { [weak self] result in
             
             guard let self = self else { return }
             

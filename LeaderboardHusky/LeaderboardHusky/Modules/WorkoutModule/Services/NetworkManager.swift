@@ -8,30 +8,32 @@ enum ServiceError: Error {
     case badStatusCode(Int)
 }
 
-enum Endpoint: String {
-    case baseURL = "https://69154abb84e8bd126af965b5.mockapi.io/api/v1/workouts"
-    case baseURLForWorkout = "https://69154abb84e8bd126af965b5.mockapi.io/api/v1/workouts?id="
+enum Endpoint {
+    case workouts
+    case workout(id: Int)
+    
+    var url: String {
+        switch self {
+        case .workouts:
+            return "https://69154abb84e8bd126af965b5.mockapi.io/api/v1/workouts"
+        case .workout(let id):
+            return  "https://69154abb84e8bd126af965b5.mockapi.io/api/v1/workouts?id=\(id)"
+        }
+    }
 }
 
 protocol INetworkManager: AnyObject {
     func loadData<T: Decodable>(from endpoint: Endpoint,
                                           for type: T.Type,
-                                          id: Int?,
                                           completion: @escaping (Result<T, ServiceError>) -> Void)
 }
 
 final class NetworkManager: INetworkManager {
     func loadData<T: Decodable>(from endpoint: Endpoint,
                                           for type: T.Type,
-                                          id: Int?,
                                           completion: @escaping (Result<T, ServiceError>) -> Void) {
-        var url = endpoint.rawValue
         
-        if let id = id {
-            url += "\(id)"
-        }
-        
-        guard let url = URL(string: url) else {
+        guard let url = URL(string: endpoint.url) else {
             completion(.failure(.invalidURL))
             return
         }
